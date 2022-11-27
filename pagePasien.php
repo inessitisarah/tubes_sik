@@ -11,11 +11,13 @@
     <?php
     include "koneksiDB.php";
 
-    $ambildata = mysqli_query($koneksiDB, "select * from tabel_periksa");
+    $ambildata = mysqli_query($koneksiDB, "select * from tabel_periksa, tabel_dokter
+    WHERE tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
+    
     while ($tampil = mysqli_fetch_array($ambildata)){
         echo "
         <tr>
-            <td>$tampil[id_dokter]</td>
+            <td>$tampil[nama_dokter]</td>
             <td>$tampil[tanggal_periksa]</td>
             <td>$tampil[diagnosis]</td>
             <td>$tampil[preskripsi_obat]</td>
