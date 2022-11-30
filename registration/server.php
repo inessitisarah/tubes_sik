@@ -6,6 +6,7 @@ require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
 // initializing variables
 $username = "";
 $email    = "";
+$role="";
 $errors = array();  
 
 // connect to the database
@@ -17,14 +18,15 @@ if (isset($_POST['reg_user'])) {
   $email = mysqli_real_escape_string($configDB, $_POST['email']);
   $password_1 = mysqli_real_escape_string($configDB, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($configDB, $_POST['password_2']);
+  $role= mysqli_real_escape_string($configDB, $_POST['role']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($username)) { array_push($errors, "Username is required"); }
-  if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if (empty($username)) { array_push($errors, "Username harus diisi."); }
+  if (empty($email)) { array_push($errors, "Email harus diisi."); }
+  if (empty($password_1)) { array_push($errors, "Password harus diisi."); }
   if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
+	array_push($errors, "Kedua password tidak sama.");
   }
 
   // first check the database to make sure 
@@ -35,11 +37,11 @@ if (isset($_POST['reg_user'])) {
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
-      array_push($errors, "Username sudah terdaftar, silakan masukkan username lagi");
+      array_push($errors, "Username sudah terdaftar, silakan masukkan username lagi.");
     }
 
     if ($user['email'] === $email) {
-      array_push($errors, "email already exists");
+      array_push($errors, "Email Anda sudah terdaftar di sistem.");
     }
   }
 
@@ -47,12 +49,19 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO user_credentials (username, email, password) 
-  			  VALUES('$username', '$email', '$password')";
+  	$query = "INSERT INTO user_credentials (username, email, password, role) 
+  			  VALUES('$username', '$email', '$password', '$role')";
   	mysqli_query($configDB, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: index.php');
+    //pembagian header sesuai dengan role masing-masing user
+    if ($role=="pasien"){
+      header('location: pagePasien.php');
+    }
+    else if ($role=="dokter"){
+      header('location: pagedokter.php');
+    }
+  	
   }
 }
 ?> 

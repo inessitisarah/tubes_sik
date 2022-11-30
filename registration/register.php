@@ -39,12 +39,19 @@
   	  <label>Confirm password</label>
   	  <input type="password" name="password_2">
   	</div>
+	<select name="role">
+      <option value="" disabled selected>Role</option>
+      <option value="admin">Admin</option>
+      <option value="dokter">Dokter</option>
+      <option value="pasien">Pasien</option>
+      <option value="apoteker">Apoteker</option>
+    </select>
   	<div class="input-group">
   	  <button type="submit" class="btn" name="reg_user">Register</button>
   	</div>
     
   	<p>
-  		Already a member? <a href="login.php">Sign in</a>
+  		Sudah registrasi? <a href="login.php">Login</a>
   	</p>
   </form>
   </div>
