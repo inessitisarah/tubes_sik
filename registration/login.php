@@ -1,6 +1,5 @@
 <!-- Connect to the DB -->
-<?php include "include/configDB.php"; ?>
-
+<?php include "D:/xampp/htdocs/tubes_sik/include/configDB.php"; ?>
 <!DOCTYPE html>
 
 <html>
@@ -18,8 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "templates/style.php"; ?>
-
+    <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
     <title>LOGIN</title>
 
 
@@ -29,8 +27,8 @@
     <h3>LOGIN</h3>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <?php include "templates/navbarWithoutMenu.php"; ?>
-    <?php include "templates/style.php"; ?>
+    <?php include "D:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
+    <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
 
 
      <form action="pagePasien.php" method="post">
@@ -56,6 +54,6 @@
      </form>
 
 </body>
-<?php include "templates/footer.php"; ?>
+<?php include "D:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
 
 </html>
