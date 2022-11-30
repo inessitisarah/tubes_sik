@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "templates/style.php"; ?>
+    <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
 
 </head>
 
