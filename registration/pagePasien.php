@@ -26,12 +26,18 @@
 
     <br><br><br><br>
     <div>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_POST["uname"]; ?>!</b></h2>
+
+    //nyoba ngambil user dari username session
+
+    <?php 
+    $user =  $_SESSION['username']; 
+    ?>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $_POST["user"]; ?>!</b></h2>
     <br><br>
     <?php
         require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
-        $user = $_POST["uname"];
-
+        //nyoba ngambil user dari username session
+       
         $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
         WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
 

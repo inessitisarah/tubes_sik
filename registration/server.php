@@ -61,6 +61,12 @@ if (isset($_POST['reg_user'])) {
     else if ($role=="dokter"){
       header('location: pagedokter.php');
     }
+    else if ($role=="apoteker"){
+      header('location: pageApoteker.php');
+    }
+    else if ($role=="admin"){
+      header('location: pageAdmin.php');
+    }
   	
   }
 }
