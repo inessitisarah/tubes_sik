@@ -12,7 +12,7 @@
 
 <body>
 
-     <form action="login.php" method="post">
+     <form action="pagePasien.php" method="post">
 
         <h2>LOGIN</h2>
 
