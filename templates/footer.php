@@ -31,7 +31,7 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<div class="copyright-content">
-								<p>© Copyright 2022  |  All Rights Reserved 
+								<p>© Copyright 2022  |  All Rights Reserved | Made By Dennisa, Ines, and Izza
 									<!-- by <a href="https://www.wpthemesgrid.com" target="_blank">wpthemesgrid.com</a>  -->
 								</p>
 							</div>
