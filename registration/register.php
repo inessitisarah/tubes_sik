@@ -17,10 +17,10 @@
 </head>
 
 <body>
-  <div class="header">
+  <div class="w3-center">
   	<h2>Registrasi</h2>
   </div>
-	
+  <div class="w3-center">
   <form method="post" action="register.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
@@ -42,9 +42,11 @@
   	<div class="input-group">
   	  <button type="submit" class="btn" name="reg_user">Register</button>
   	</div>
+    
   	<p>
   		Already a member? <a href="login.php">Sign in</a>
   	</p>
   </form>
+  </div>
 </body>
 </html>
