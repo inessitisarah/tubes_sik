@@ -3,7 +3,7 @@
 <html>
 <!-- HEAD -->
 <head>
-    <title>Halaman Dokter</title>
+    <title>Puskesmas Ganesha : Halaman Dokter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,16 +22,14 @@
     <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
     </div>
 
-    <br><br><br><br>
-    <div>
 
+    <div>
     <!--nyoba ngambil user dari username session -->
     <?php 
     $username =  $_SESSION['username'];
     ?>
-
+    <br><br><br><br>
     <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $username; ?>!</b></h2>
-    <br><br>
     </div>
 
     <div>
@@ -66,7 +64,6 @@
                 </tr>
                 <?php
                 while ($tampil = mysqli_fetch_array($ambildata)){
-                    $update = $tampil['id_periksa'];
                     echo "
                     <tr>
                         <td>$no</td>
@@ -75,7 +72,7 @@
                         <td>$tampil[diagnosis]</td>
                         <td>$tampil[preskripsi_obat]</td>
                         <td>$tampil[id_periksa]</td>
-                        <td> <a href = 'updatepemeriksaan.php?update = $tampil[id_periksa]'>
+                        <td> <a href = 'updatepemeriksaan.php?update=$tampil[id_periksa]'>
                             <input type = 'button' value = 'Edit'>
                             </a>
                         </td>

@@ -98,10 +98,11 @@ if (isset($_POST['login_user'])) {
       if ($role=="pasien"){
         //nyoba redirect ke localhost
         header('location: pagePasien.php');
+      }*/
+       if ($role=="dokter"){
+        header('location: http://localhost/tubes_sik/dokter/pagedokter.php');
       }
-      else if ($role=="dokter"){
-        header('location: pagedokter.php');
-      }
+      /*
       else if ($role=="apoteker"){
         header('location: pageApoteker.php');
       }
