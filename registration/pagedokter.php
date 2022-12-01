@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <html>
 <!-- HEAD -->
 <head>
@@ -11,38 +13,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "templates/style.php"; ?>
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
 </head>
 
 <body>
     <div>
     <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithoutMenu.php"; ?>
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
     </div>
 
     <br><br><br><br>
     <div>
-    <?php
-    
+
+    <!--nyoba ngambil user dari username session -->
+    <?php 
+    $username =  $_SESSION['username'];
     ?>
-    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_POST["uname"]; ?>!</b></h2>
+
+    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $username; ?>!</b></h2>
     <br><br>
     </div>
 
     <div>
     <?php
-        include "koneksiDB.php";
-        $user = $_POST["uname"];
+        include "C:/xampp/htdocs/tubes_sik/koneksiDB.php";
         $no = 1;
         $tanggal_sekarang = date("Y-m-d");
 
         $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_dokter.uname = '$user' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
+        WHERE tabel_dokter.uname = '$username' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
         if ($num_rows == 0){ ?>
-            <h3 class="w3-center">Tidak Ada Reservasi Pemeriksaan</h3>
+            <h3 class="w3-center">Tidak Ada Reservasi Pemeriksaan Hari Ini</h3>
             <?php
         }
         
@@ -57,10 +61,12 @@
                     <th>Nama Pasien</th>
                     <th>Diagnosis</th>
                     <th>Preskripsi Obat</th>
+                    <th>ID Periksa</th>
                     <th>Action</th>
                 </tr>
                 <?php
                 while ($tampil = mysqli_fetch_array($ambildata)){
+                    $update = $tampil['id_periksa'];
                     echo "
                     <tr>
                         <td>$no</td>
@@ -68,12 +74,17 @@
                         <td>$tampil[nama_pasien]</td>
                         <td>$tampil[diagnosis]</td>
                         <td>$tampil[preskripsi_obat]</td>
+                        <td>$tampil[id_periksa]</td>
+                        <td> <a href = 'updatepemeriksaan.php?update = $tampil[id_periksa]'>
+                            <input type = 'button' value = 'Edit'>
+                            </a>
+                        </td>
                     </tr>";
                     $no++;
                 }
                 ?>
             </table>
-            <?php
+            <?php 
         }
         ?>
         </div>
@@ -81,10 +92,10 @@
     <br><br><br><br>
     <div>
         <!-- Footer -->
-        <?php include "templates/footer.php"; ?>
+        <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
 
         <!-- Script -->
-        <?php include "include/script.php"; ?>
+        <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
     </div>
 </body>
 

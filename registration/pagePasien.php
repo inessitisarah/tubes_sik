@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <html>
 
 <!-- HEAD -->
@@ -12,14 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "templates/style.php"; ?>
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
 </head>
 
 
 <body>
     <div>
         <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithoutMenu.php"; ?>
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
 
     </div>
 
@@ -27,19 +29,19 @@
     <br><br><br><br>
     <div>
 
-    //nyoba ngambil user dari username session
+    <!--nyoba ngambil user dari username session -->
 
     <?php 
-    $user =  $_SESSION['username']; 
+    $username =  $_SESSION['username'];
     ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_POST["user"]; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $username; ?>!</b></h2>
     <br><br>
     <?php
-        require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
+        require "C:/xampp/htdocs/tubes_sik/include/configDB.php";
         //nyoba ngambil user dari username session
        
-        $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
+        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
+        WHERE tabel_pasien.uname = '$username' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($configDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
@@ -79,10 +81,10 @@
     <br><br><br><br>
     <div>
         <!-- Footer -->
-        <?php include "templates/footer.php"; ?>
+        <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
 
         <!-- Script -->
-        <?php include "include/script.php"; ?>
+        <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
     </div>
     
 </body>

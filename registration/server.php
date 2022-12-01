@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
+require "C:/xampp/htdocs/tubes_sik/include/configDB.php";
 
  
 // initializing variables
