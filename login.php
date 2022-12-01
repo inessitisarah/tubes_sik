@@ -1,5 +1,7 @@
 <!-- Connect to the DB -->
 <?php include "D:/xampp/htdocs/tubes_sik/include/configDB.php"; ?>
+<?php include "D:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
+<?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
 <!DOCTYPE html>
 
 <html>
@@ -18,42 +20,35 @@
 
     <!-- STYLE -->
     <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
-    <title>LOGIN</title>
 
 
-</head>
 
 <body>
-    <h3>LOGIN</h3>
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <?php include "D:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
-    <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
-
-
-     <form action="pagePasien.php" method="post">
-
-        <h2>LOGIN</h2>
-
-        <?php if (isset($_GET['error'])) { ?>
-
-            <p class="error"><?php echo $_GET['error']; ?></p>
-
-        <?php } ?>
-
-        <label>User Name</label>
-
-        <input type="text" name="uname" placeholder="User Name"><br>
-
-        <label>Password</label>
-
-        <input type="password" name="password" placeholder="Password"><br> 
-
-        <button type="submit">Login</button>
-
-     </form>
-
+  <div class="header">
+  	<h2>Login</h2>
+  </div>
+	 
+  <form method="post" action="login.php">
+  	<?php include('errors.php'); ?>
+  	<div class="input-group">
+  		<label>Username</label>
+  		<input type="text" name="username" >
+  	</div>
+  	<div class="input-group">
+  		<label>Password</label>
+  		<input type="password" name="password">
+  	</div>
+  	<div class="input-group">
+  		<button type="submit" class="btn" name="login_user">Login</button>
+  	</div>
+  	<p>
+  		Belum registrasi? <a href="register.php">Sign up</a>
+  	</p>
+  </form>
 </body>
+
 <?php include "D:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
 
 </html>
+
+
