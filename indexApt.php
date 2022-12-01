@@ -71,13 +71,13 @@ include "include/configDB.php";
     </div>
 
     <!-- 'Layanan' Section -->
-<div class="w3-container w3-light-grey" style="padding:64px 16px" id="layanan">
+    <div class="w3-container w3-light-grey" style="padding:64px 16px" id="layanan">
   <h3 class="w3-center"><b>Jadwal Layanan</b></h3>
   <p class="w3-center w3-large">Berikut ini adalah fasilitas yang dimiliki Puskesmas Ganesha dalam rangka menyediakan layanan kesehatan bagi masyarakat</p>
   <div class="w3-row-padding w3-grayscale" style="margin-top:32px">
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="images/umum.jpeg" alt="John" style="width:100%">
+        <img src="images/umum.jpeg" alt="Poliklinik Umum" style="width:100%">
         <div class="w3-container">
           <h3>Umum</h3>
           <p class="w3-opacity">Poli Pelayanan</p>
@@ -88,7 +88,7 @@ include "include/configDB.php";
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="images/gigi.jpg" alt="Jane" style="width:100%">
+        <img src="images/gigi.jpg" alt="Poliklinik Gigi" style="width:100%">
         <div class="w3-container">
           <h3>Gigi dan Mulut</h3>
           <p class="w3-opacity">Poli Pelayananan</p>
@@ -99,7 +99,7 @@ include "include/configDB.php";
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="images/kia.jpeg" alt="Mike" style="width:100%">
+        <img src="images/kia.jpeg" alt="Poliklinik KIA" style="width:100%">
         <div class="w3-container">
           <h3>Kesehatan Ibu Anak</h3>
           <p class="w3-opacity">Poli Pelayanan</p>
@@ -110,7 +110,7 @@ include "include/configDB.php";
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="images/kb.jpg" alt="KB" style="width:100%">
+        <img src="images/kb.jpg" alt="Poliklinik KB" style="width:100%">
         <div class="w3-container">
           <h3>Keluarga Berencana</h3>
           <p class="w3-opacity">Poli Pelayanan</p>
@@ -119,8 +119,42 @@ include "include/configDB.php";
         </div>
       </div>
     </div>
+
+    <div class="w3-col l12 m6 w3-margin-bottom">
+    <h1 class="w3-center"></h1>
+    <table class="w3-table-all w3-hoverable w3-card w3-centered" >
+        <thead>
+          <tr class="w3-light-grey">
+            <th>Poliklinik</th>
+            <th>Nama Dokter</th>
+            <th>Jadwal Praktek</th>
+            <th>Spesialisasi</th>
+          </tr>
+        </thead>
+
+        <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+        <?php
+                $sql = mysqli_query($configDB,"SELECT poli_dokter,nama_dokter,jadwal_dokter,spesialisasi FROM dokter order by poli_dokter ASC");
+                // LOOP TILL END OF DATA
+                while($row = mysqli_fetch_row($sql))
+                {
+            ?>
+        
+        <tr>
+                <!-- FETCHING DATA FROM EACH
+                    ROW OF EVERY COLUMN -->
+                <td><?php echo $row[0];?></td>
+                <td><?php echo $row[1];?></td>
+                <td><?php echo $row[2];?></td>
+                <td><?php echo $row[3];?></td>
+        </tr>
+        <?php
+                }
+            ?>
+      </table>
+      </div>
   </div>
-</div>
+</div>  
 
     <!-- Footer -->
     <?php include "templates/footer.php"; ?>
