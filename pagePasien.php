@@ -13,6 +13,8 @@
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
+    
+
 </head>
 
 
@@ -26,12 +28,17 @@
 
     <br><br><br><br>
     <div>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_POST["uname"]; ?>!</b></h2>
+
+
+    <?php 
+    session_start(); 
+    ?>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
     <br><br>
     <?php
-        include "koneksiDB.php";
-        $user = $_POST["uname"];
-
+        require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
+        //nyoba ngambil user dari username session
+       
         $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
         WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
 
