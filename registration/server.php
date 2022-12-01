@@ -56,6 +56,7 @@ if (isset($_POST['reg_user'])) {
   	$_SESSION['success'] = "You are now logged in";
     //pembagian header sesuai dengan role masing-masing user
     if ($role=="pasien"){
+      //nyoba redirect ke localhost
       header('location: pagePasien.php');
     }
     else if ($role=="dokter"){
