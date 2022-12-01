@@ -13,6 +13,8 @@
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
+    
+
 </head>
 
 
@@ -30,9 +32,9 @@
     //nyoba ngambil user dari username session
 
     <?php 
-    $user =  $_SESSION['username']; 
+    session_start(); 
     ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_POST["user"]; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
     <br><br>
     <?php
         require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
