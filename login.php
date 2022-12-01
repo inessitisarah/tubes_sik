@@ -2,6 +2,8 @@
 <?php include "D:/xampp/htdocs/tubes_sik/include/configDB.php"; ?>
 <?php include "D:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
 <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+<?php include "server.php"; ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -23,30 +25,40 @@
 
 
 
-<body>
-  <div class="header">
-  	<h2>Login</h2>
-  </div>
-	 
-  <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		Belum registrasi? <a href="register.php">Sign up</a>
-  	</p>
-  </form>
-</body>
 
+
+<body>
+    <h3>LOGIN</h3>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+     <form  method="post" action="login.php">
+
+        <h2>LOGIN</h2>
+
+        <?php if (isset($_GET['error'])) { ?>
+
+            <p class="error"><?php echo $_GET['error']; ?></p>
+
+        <?php } ?>
+
+        <label>Username</label>
+
+        <input type="text" name="username" placeholder="Username"><br>
+
+        <label>Password</label>
+
+        <input type="password" name="password" placeholder="Password"><br> 
+
+        <div class="input-group">
+  		<button type="submit" class="btn" name="login_user">Login</button>
+  	    </div>
+
+     </form>
+
+</body>
 <?php include "D:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
 
 </html>
