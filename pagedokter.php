@@ -1,8 +1,7 @@
 <html>
-
 <!-- HEAD -->
 <head>
-    <title>Halaman Pasien</title>
+    <title>Halaman Dokter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,69 +12,74 @@
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
-    
-
 </head>
-
 
 <body>
     <div>
-        <!-- Navbar (sit on top) -->
+    <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithoutMenu.php"; ?>
-
-    </div>
-
-
-    <br><br><br><br>
-    <div>
-
-
     <?php 
     session_start(); 
     ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
-    <br><br>
+    </div>
+
+    <br><br><br><br>
+    <div>
     <?php
-        require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
-        //nyoba ngambil user dari username session
-       
+    
+    ?>
+    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_POST["uname"]; ?>!</b></h2>
+    <br><br>
+    </div>
+
+    <div>
+    <?php
+        include "koneksiDB.php";
+        $user = $_POST["uname"];
+        $no = 1;
+        $tanggal_sekarang = date("Y-m-d");
+
         $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
+        WHERE tabel_dokter.uname = '$user' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
         if ($num_rows == 0){ ?>
-            <h3 class="w3-center">Anda Belum Melakukan Pemeriksaan</h3>
+            <h3 class="w3-center">Tidak Ada Reservasi Pemeriksaan</h3>
             <?php
         }
-
+        
         else{
             ?>
-            <h3 class="w3-center">Berikut Riwayat Pemeriksaan Anda</h3>
+            <h3 class="w3-center">Berikut Data Reservasi Pemeriksaan Anda Hari Ini:</h3>
             <br><br>
             <table class="w3-table w3-striped w3-border" align="center">
                 <tr>
-                    <th>Dokter</th>
+                    <th>No</th>
                     <th>Tanggal Periksa</th>
+                    <th>Nama Pasien</th>
                     <th>Diagnosis</th>
                     <th>Preskripsi Obat</th>
+                    <th>Action</th>
                 </tr>
                 <?php
                 while ($tampil = mysqli_fetch_array($ambildata)){
                     echo "
                     <tr>
-                        <td>$tampil[nama_dokter]</td>
+                        <td>$no</td>
                         <td>$tampil[tanggal_periksa]</td>
+                        <td>$tampil[nama_pasien]</td>
                         <td>$tampil[diagnosis]</td>
                         <td>$tampil[preskripsi_obat]</td>
                     </tr>";
+                    $no++;
                 }
                 ?>
             </table>
             <?php
         }
-    ?>
-    </div>
+        ?>
+        </div>
     
     <br><br><br><br>
     <div>
@@ -85,8 +89,8 @@
         <!-- Script -->
         <?php include "include/script.php"; ?>
     </div>
-    
 </body>
-</body>
-</html>
 
+
+
+</html>
