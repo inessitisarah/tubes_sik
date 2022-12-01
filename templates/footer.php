@@ -1,4 +1,7 @@
 <!-- Footer Area -->
+<div class="w3-container w3-light-grey" style="padding:16px 16px">
+</div>
+
 <footer class="w3-row-padding w3-padding">
     <div class="w3-third">
       <h3><b>Puskesmas Ganesha</b></h3>	

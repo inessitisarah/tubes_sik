@@ -1,5 +1,9 @@
 <!-- Connect to the DB -->
 <?php include "D:/xampp/htdocs/tubes_sik/include/configDB.php"; ?>
+<?php include "D:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
+<?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+<?php include "server.php"; ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -18,20 +22,19 @@
 
     <!-- STYLE -->
     <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
-    <title>LOGIN</title>
 
 
-</head>
+
+
 
 <body>
     <h3>LOGIN</h3>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <?php include "D:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
-    <?php include "D:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
 
 
-     <form action="pagePasien.php" method="post">
+
+     <form  method="post" action="login.php">
 
         <h2>LOGIN</h2>
 
@@ -41,15 +44,17 @@
 
         <?php } ?>
 
-        <label>User Name</label>
+        <label>Username</label>
 
-        <input type="text" name="uname" placeholder="User Name"><br>
+        <input type="text" name="username" placeholder="Username"><br>
 
         <label>Password</label>
 
         <input type="password" name="password" placeholder="Password"><br> 
 
-        <button type="submit">Login</button>
+        <div class="input-group">
+  		<button type="submit" class="btn" name="login_user">Login</button>
+  	    </div>
 
      </form>
 
@@ -57,3 +62,5 @@
 <?php include "D:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
 
 </html>
+
+

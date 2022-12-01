@@ -18,6 +18,9 @@
     <div>
     <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithoutMenu.php"; ?>
+    <?php 
+    session_start(); 
+    ?>
     </div>
 
     <br><br><br><br>

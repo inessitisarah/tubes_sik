@@ -3,7 +3,6 @@
     <a href="#home" class="w3-bar-item w3-button"><b>PUSKESMAS</b> Ganesha</a>
     
     <div class="w3-right">
-      <a href="#layanan" class="w3-bar-item w3-button">Layanan</a>
       <a href="./login.php" class="w3-bar-item w3-button">Login</a>
     </div>
   </div>
