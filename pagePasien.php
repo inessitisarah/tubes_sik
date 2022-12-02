@@ -33,7 +33,7 @@
     <?php 
     session_start(); 
     ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['nama']; ?>!</b></h2>
     <br><br>
     <?php
         require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
