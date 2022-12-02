@@ -50,7 +50,10 @@ include "include/configDB.php";
 
         <!-- PHP CODE TO FETCH DATA FROM ROWS -->
         <?php
-                $sql = mysqli_query($configDB,"SELECT time_stamp,preskripsi_obat,nama_pasien FROM pemeriksaan,pasien WHERE pemeriksaan.id_pasien = pasien.id_pasien  order by time_stamp DESC LIMIT 3");
+                //nama pasien blm bisa diambil, karena data nama pasien masih di tabel pasien
+                //hrs dibikin query buat ngambilnya
+                
+                $sql = mysqli_query($configDB,"SELECT timestamp,preskripsi_obat,nama_pasien FROM periksa,pasien WHERE periksa.id_pasien = pasien.id_pasien  order by time_stamp DESC LIMIT 3");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
