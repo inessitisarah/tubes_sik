@@ -1,3 +1,5 @@
+<!-- Start Session -->
+<?php session_start() ?>
 <!-- Connect to the DB -->
 <?php 
 include "include/configDB.php";
@@ -15,7 +17,7 @@ include "include/configDB.php";
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="sWtylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
