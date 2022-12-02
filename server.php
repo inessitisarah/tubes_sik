@@ -129,11 +129,9 @@ if (isset($_POST['login_user'])) {
         4
       }
       else if ($user['role']==="apoteker"){
-        header('location: pageApoteker.php');
         header('location: indexApt.php');
       }
       else if ($user['role']==="admin"){
-        header('location: pageAdmin.php');
         header('location: indexAdmin.php');
       } 
   	}else {
