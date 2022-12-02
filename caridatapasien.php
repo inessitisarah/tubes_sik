@@ -24,12 +24,12 @@
 
     <div>
         <?php
-        include "C:/xampp/htdocs/tubes_sik/koneksiDB.php";
+        include "C:/xampp/htdocs/tubes_sik/include/configDB.php";
         $no = 1;
 
 
-        $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_dokter.uname = '$username' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
+        $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
+        WHERE dokter.id = '$id' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
         ?>
         
     </div>
