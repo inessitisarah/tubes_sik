@@ -126,7 +126,7 @@ if (isset($_POST['login_user'])) {
         $user=mysqli_fetch_assoc($ambildata);
         $_SESSION['nama']=$user['nama'];
         header('location: pagedokter.php');
-        4
+        
       }
       else if ($user['role']==="apoteker"){
         header('location: indexApt.php');
