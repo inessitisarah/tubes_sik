@@ -117,6 +117,7 @@ if (isset($_POST['login_user'])) {
       //redirect sesuai role
        if ($user['role']==="dokter"){
         header('location: pagedokter.php');
+        4
       }
       else if ($user['role']==="apoteker"){
         header('location: pageApoteker.php');
