@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "include/configDB.php";
+require "C:/xampp/htdocs/tubes_sik/include/configDB.php";
 
  
 // initializing variables
@@ -63,19 +63,14 @@ if (isset($_POST['reg_user'])) {
       header('location: pagedokter.php');
     }
     else if ($role=="apoteker"){
-      header('location: indexApt.php');
+      header('location: pageApoteker.php');
     }
     else if ($role=="admin"){
-      header('location: indexAdmin.php');
+      header('location: pageAdmin.php');
     }
   	
   }
 }
-
-$username = "";
-$email    = "";
-$role="";
-$errors = array();  
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
@@ -94,41 +89,31 @@ if (isset($_POST['login_user'])) {
   	$query = "SELECT * FROM user_credentials WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($configDB, $query);
   	if (mysqli_num_rows($results) == 1) {
-      
-      $user=mysqli_fetch_assoc($results);
+      $hasilquery = mysqli_fetch_array($results);
   	  $_SESSION['username'] = $username;
-      $_SESSION['id'] = $user['user_id'];
-      $id=$user['user_id'];
-      $_SESSION['role'] = $user['role'];
-  	  $_SESSION['success'] = "Login berhasil";
-      
-      //header('location: index.php');
+      $_SESSION['id'] = $hasilquery['user_id'];
+      $_SESSION['role'] = mysqli_query($configDB, "SELECT role FROM user_credentials WHERE username='$username' AND password='$password'");
 
-/* hrsnya ini buat ke page tertentu tp blm bs*/
-      if ($_SESSION['role']==="pasien"){
-        $query="SELECT * FROM pasien JOIN user_credentials ON pasien.id = user_credentials.user_id WHERE pasien.id=$id";
-        $ambildata=mysqli_query($configDB, $query);
-        $user=mysqli_fetch_assoc($ambildata);
-        $_SESSION['nama']=$user['nama'];
-        
+  	  $_SESSION['success'] = "You are now logged in";
+      header('location: index.php');
+/* hrsnya ini buat ke page tertentu tp blm bs
+      if ($role=="pasien"){
+        //nyoba redirect ke localhost
         header('location: pagePasien.php');
+      }*/
+       if ($role=="dokter"){
+        header('location: http://localhost/tubes_sik/dokter/pagedokter.php');
       }
-      //redirect sesuai role
-       if ($user['role']==="dokter"){
-        $query="SELECT * FROM dokter JOIN user_credentials ON dokter.id = user_credentials.user_id WHERE dokter.id=$id";
-        $ambildata=mysqli_query($configDB, $query);
-        $user=mysqli_fetch_assoc($ambildata);
-        $_SESSION['nama']=$user['nama'];
-        header('location: pagedokter.php');
+      /*jadi aku coba buat abis regis ke page dokter yg di folder dokter, tp gabisa, selalu ke direct ke page dokter di folder utama
+      /*
+      else if ($role=="apoteker"){
+        header('location: pageApoteker.php');
       }
-      else if ($user['role']==="apoteker"){
-        header('location: indexApt.php');
-      }
-      else if ($user['role']==="admin"){
-        header('location: indexAdmin.php');
-      } 
+      else if ($role=="admin"){
+        header('location: pageAdmin.php');
+      } */
   	}else {
-  		array_push($errors, "Kombinasi username/password masih salah.");
+  		array_push($errors, "Wrong username/password combination");
   	}
   }
 }
