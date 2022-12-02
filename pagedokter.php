@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+    <?php include "templates/style.php"; ?>
 </head>
 
 <body>
     <div>
     <!-- Navbar (sit on top) -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
+    <?php include "templates/navbarWithoutMenu.php"; ?>
     </div>
 
 
@@ -34,11 +34,11 @@
 
     <div>
     <?php
-        include "C:/xampp/htdocs/tubes_sik/koneksiDB.php";
+        include "include/configDB.php";
         $no = 1;
         $tanggal_sekarang = date("Y-m-d");
 
-        $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
+        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
         WHERE tabel_dokter.uname = '$username' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
@@ -89,10 +89,10 @@
     <br><br><br><br>
     <div>
         <!-- Footer -->
-        <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
+        <?php include "templates/footer.php"; ?>
 
         <!-- Script -->
-        <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
+        <?php include "include/script.php"; ?>
     </div>
 </body>
 

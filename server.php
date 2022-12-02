@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "C:/xampp/htdocs/tubes_sik/include/configDB.php";
+include "include/configDB.php";
 
  
 // initializing variables
@@ -72,6 +72,11 @@ if (isset($_POST['reg_user'])) {
   }
 }
 
+$username = "";
+$email    = "";
+$role="";
+$errors = array();  
+
 // LOGIN USER
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($configDB, $_POST['username']);
@@ -89,28 +94,30 @@ if (isset($_POST['login_user'])) {
   	$query = "SELECT * FROM user_credentials WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($configDB, $query);
   	if (mysqli_num_rows($results) == 1) {
+      $user=mysqli_fetch_assoc($results);
   	  $_SESSION['username'] = $username;
-      $_SESSION['role'] = mysqli_query($configDB, "SELECT role FROM user_credentials WHERE username='$username' AND password='$password'");
-
+    
   	  $_SESSION['success'] = "You are now logged in";
-      header('location: index.php');
-/* hrsnya ini buat ke page tertentu tp blm bs
-      if ($role=="pasien"){
+      
+      //header('location: index.php');
+
+/* hrsnya ini buat ke page tertentu tp blm bs*/
+      if ($user['role']==="pasien"){
         //nyoba redirect ke localhost
+        echo $role;
         header('location: pagePasien.php');
-      }*/
-       if ($role=="dokter"){
-        header('location: http://localhost/tubes_sik/dokter/pagedokter.php');
       }
-      /*
-      else if ($role=="apoteker"){
+       if ($user['role']==="dokter"){
+        header('location: pagedokter.php');
+      }
+      else if ($user['role']==="apoteker"){
         header('location: pageApoteker.php');
       }
-      else if ($role=="admin"){
+      else if ($user['role']==="admin"){
         header('location: pageAdmin.php');
-      } */
+      } 
   	}else {
-  		array_push($errors, "Wrong username/password combination");
+  		array_push($errors, "Kombinasi username/password masih salah.");
   	}
   }
 }
