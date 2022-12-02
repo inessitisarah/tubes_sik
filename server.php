@@ -97,8 +97,8 @@ if (isset($_POST['login_user'])) {
       
       $user=mysqli_fetch_assoc($results);
   	  $_SESSION['username'] = $username;
-      $_SESSION['id'] = $user['id'];
-      $id=$user['id'];
+      $_SESSION['id'] = $user['user_id'];
+      $id=$user['user_id'];
       $_SESSION['role'] = $user['role'];
   	  $_SESSION['success'] = "You are now logged in";
       
@@ -106,15 +106,15 @@ if (isset($_POST['login_user'])) {
 
 /* hrsnya ini buat ke page tertentu tp blm bs*/
       if ($_SESSION['role']==="pasien"){
-        //nyoba redirect ke localhost
         echo $role;
-        //$query="SELECT * FROM pasien WHERE pasien.pasien_id=$id JOIN user_credentials ON pasien.pasien_id = user_credentials.user_id";
-        //$ambildata=($configDB, $query);
-        //$user=mysqli_fetch_assoc($ambildata);
-        //$_SESSION['nama']=$user['nama_pasien'];
+        $query="SELECT * FROM pasien JOIN user_credentials ON pasien.pasien_id = user_credentials.user_id WHERE pasien.pasien_id=$id";
+        $ambildata=mysqli_query($configDB, $query);
+        $user=mysqli_fetch_assoc($ambildata);
+        $_SESSION['nama']=$user['nama_pasien'];
         
         header('location: pagePasien.php');
       }
+      //redirect sesuai role
        if ($user['role']==="dokter"){
         header('location: pagedokter.php');
       }
