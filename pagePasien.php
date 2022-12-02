@@ -22,6 +22,7 @@
     <div>
         <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithoutMenu.php"; ?>
+    <?php include "include/configDB.php"; ?>
 
     </div>
 
@@ -33,14 +34,21 @@
     <?php 
     session_start(); 
     ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
+    <?php 
+/*  $query="SELECT * FROM pasien JOIN user_credentials ON pasien.pasien_id = user_credentials.user_id WHERE pasien.pasien_id=$_SESSION['id']";
+    $ambildata=mysqli_query($configDB,$query);
+    $user= mysqli_fetch_assoc($ambildata)
+    $_SESSION['nama'] = $user['nama_pasien']; */
+
+    ?>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['nama']; ?>!</b></h2>
     <br><br>
     <?php
         require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
         //nyoba ngambil user dari username session
-       
-        $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
+        $username= $_SESSION['username'];
+        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
+        WHERE tabel_pasien.uname = $username AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($configDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
