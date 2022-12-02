@@ -128,7 +128,7 @@
 
         <!-- PHP CODE TO FETCH DATA FROM ROWS -->
         <?php
-                $sql = mysqli_query($configDB,"SELECT poli_dokter,nama_dokter,jadwal_dokter,spesialisasi FROM dokter order by poli_dokter ASC");
+                $sql = mysqli_query($configDB,"SELECT * FROM dokter order by poli ASC");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {

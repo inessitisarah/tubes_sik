@@ -89,7 +89,9 @@ if (isset($_POST['login_user'])) {
   	$query = "SELECT * FROM user_credentials WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($configDB, $query);
   	if (mysqli_num_rows($results) == 1) {
+      $hasilquery = mysqli_fetch_array($results);
   	  $_SESSION['username'] = $username;
+      $_SESSION['id'] = $hasilquery['user_id'];
       $_SESSION['role'] = mysqli_query($configDB, "SELECT role FROM user_credentials WHERE username='$username' AND password='$password'");
 
   	  $_SESSION['success'] = "You are now logged in";

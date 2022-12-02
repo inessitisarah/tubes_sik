@@ -1,3 +1,6 @@
+<!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
+
+
 <?php session_start() ?>
 
 <html>
@@ -30,7 +33,8 @@
     <div>
     <!--nyoba ngambil user dari username session -->
     <?php 
-    $username =  $_SESSION['username'];
+    $id =  $_SESSION['id'];
+    $username = $_SESSION['username'];
     ?>
 
     <?php
@@ -38,20 +42,21 @@
     ?>
 
     <br><br><br><br>
-    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $username; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_SESSION['username']; ?>!</b></h2>
     </div>
 
     <div>
     <?php
         $no = 1;
-
         date_default_timezone_set('Asia/Hong_Kong');
         $tanggal_sekarang = date("Y-m-d");
+        echo $id;
 
-        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_dokter.uname = '$username' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
 
-        $num_rows = mysqli_num_rows($ambildata); 
+        $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
+        WHERE periksa.id_dokter = '$id' ") or die (mysqli_error($koneksiDB));
+
+        $num_rows = mysqli_num_rows($ambildata);
 
         if ($num_rows == 0){ ?>
             <h3 class="w3-center">Tidak Ada Reservasi Pemeriksaan Hari Ini</h3>
@@ -78,7 +83,7 @@
                     <tr>
                         <td>$no</td>
                         <td>$tampil[tanggal_periksa]</td>
-                        <td>$tampil[nama_pasien]</td>
+                        <td>$tampil[nama]</td>
                         <td>$tampil[diagnosis]</td>
                         <td>$tampil[preskripsi_obat]</td>
                         <td>$tampil[id_periksa]</td>
