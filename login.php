@@ -1,7 +1,7 @@
 <!-- Connect to the DB -->
-<?php include "C:/xampp/htdocs/tubes_sik/include/configDB.php"; ?>
-<?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
-<?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+<?php include "include/configDB.php"; ?>
+<?php include "templates/navbarWithoutMenu.php"; ?>
+<?php include "templates/style.php"; ?>
 <?php include "server.php"; ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+    <?php include "templates/style.php"; ?>
 
 
 
@@ -62,7 +62,7 @@
   	</p>
 
 </body>
-<?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
+<?php include "templates/footer.php"; ?>
 
 </html>
 
