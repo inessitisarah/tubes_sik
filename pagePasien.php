@@ -39,7 +39,7 @@
         require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
         //nyoba ngambil user dari username session
        
-        $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
+        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
         WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 

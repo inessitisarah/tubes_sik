@@ -19,7 +19,11 @@
 <body>
     <div>
     <!-- Navbar (sit on top) -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithoutMenu.php"; ?>
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter.php"; ?>
+    </div>
+
+    <!-- Sidebar (hidden by default) -->
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/sidebarDokter.php"; ?>
     </div>
 
 
@@ -28,17 +32,23 @@
     <?php 
     $username =  $_SESSION['username'];
     ?>
+
+    <?php
+        include "C:/xampp/htdocs/tubes_sik/include/configDB.php";
+    ?>
+
     <br><br><br><br>
     <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $username; ?>!</b></h2>
     </div>
 
     <div>
     <?php
-        include "C:/xampp/htdocs/tubes_sik/koneksiDB.php";
         $no = 1;
+
+        date_default_timezone_set('Asia/Hong_Kong');
         $tanggal_sekarang = date("Y-m-d");
 
-        $ambildata = mysqli_query($koneksiDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
+        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
         WHERE tabel_dokter.uname = '$username' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 

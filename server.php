@@ -102,6 +102,7 @@ if (isset($_POST['login_user'])) {
        if ($role=="dokter"){
         header('location: http://localhost/tubes_sik/dokter/pagedokter.php');
       }
+      /*jadi aku coba buat abis regis ke page dokter yg di folder dokter, tp gabisa, selalu ke direct ke page dokter di folder utama
       /*
       else if ($role=="apoteker"){
         header('location: pageApoteker.php');
