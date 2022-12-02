@@ -57,6 +57,9 @@
   	    </div>
 
      </form>
+     <p>
+  		Belum mendaftarkan akun? Daftarkan di sini: <a href="register.php">Registrasi</a>
+  	</p>
 
 </body>
 <?php include "D:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
