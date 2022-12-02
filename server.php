@@ -63,10 +63,10 @@ if (isset($_POST['reg_user'])) {
       header('location: pagedokter.php');
     }
     else if ($role=="apoteker"){
-      header('location: pageApoteker.php');
+      header('location: indexApt.php');
     }
     else if ($role=="admin"){
-      header('location: pageAdmin.php');
+      header('location: indexAdmin.php');
     }
   	
   }
@@ -100,30 +100,32 @@ if (isset($_POST['login_user'])) {
       $_SESSION['id'] = $user['user_id'];
       $id=$user['user_id'];
       $_SESSION['role'] = $user['role'];
-  	  $_SESSION['success'] = "You are now logged in";
+  	  $_SESSION['success'] = "Login berhasil";
       
       //header('location: index.php');
 
 /* hrsnya ini buat ke page tertentu tp blm bs*/
       if ($_SESSION['role']==="pasien"){
-        echo $role;
-        $query="SELECT * FROM pasien JOIN user_credentials ON pasien.pasien_id = user_credentials.user_id WHERE pasien.pasien_id=$id";
+        $query="SELECT * FROM pasien JOIN user_credentials ON pasien.id = user_credentials.user_id WHERE pasien.id=$id";
         $ambildata=mysqli_query($configDB, $query);
         $user=mysqli_fetch_assoc($ambildata);
-        $_SESSION['nama']=$user['nama_pasien'];
+        $_SESSION['nama']=$user['nama'];
         
         header('location: pagePasien.php');
       }
       //redirect sesuai role
        if ($user['role']==="dokter"){
+        $query="SELECT * FROM dokter JOIN user_credentials ON dokter.id = user_credentials.user_id WHERE dokter.id=$id";
+        $ambildata=mysqli_query($configDB, $query);
+        $user=mysqli_fetch_assoc($ambildata);
+        $_SESSION['nama']=$user['nama'];
         header('location: pagedokter.php');
-        4
       }
       else if ($user['role']==="apoteker"){
-        header('location: pageApoteker.php');
+        header('location: indexApt.php');
       }
       else if ($user['role']==="admin"){
-        header('location: pageAdmin.php');
+        header('location: indexAdmin.php');
       } 
   	}else {
   		array_push($errors, "Kombinasi username/password masih salah.");

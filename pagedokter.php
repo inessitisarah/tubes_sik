@@ -29,7 +29,7 @@
     $username =  $_SESSION['username'];
     ?>
     <br><br><br><br>
-    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $username; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_SESSION['nama']; ?>!</b></h2>
     </div>
 
     <div>
