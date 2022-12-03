@@ -59,7 +59,7 @@
     </table>
     <br><br><br>
 
-    <form action="pagePasien.php" method="post">        
+    <form action="" method="post">        
         <table class="w3-center">
             <tr>
                 <label>Dokter </label>
