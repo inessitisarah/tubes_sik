@@ -99,7 +99,7 @@
 
 if(isset($_POST['proses'])){
 
-    mysqli_query($koneksiDB,"update tabel_periksa set
+    mysqli_query($koneksiDB,"update periksa set
     diagnosis = '$_POST[diagnosis]',
     preskripsi_obat = '$_POST[preskripsi_obat]'
     where id_periksa = $_GET[update]") or die(mysqli_error($koneksi));

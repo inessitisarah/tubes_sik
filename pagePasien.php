@@ -1,9 +1,9 @@
 <?php 
     session_start(); 
     require "include/configDB.php";
-if($_SESSION['role']!='pasien'){
-    header('location: errorRedirect.php');
-}
+    //if($_SESSION['role']!='pasien'){
+        //header('location: errorRedirect.php');
+    //}
 ?>
 
 <html>
