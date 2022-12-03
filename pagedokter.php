@@ -41,19 +41,18 @@
     ?>
 
     <br><br><br><br>
-    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_SESSION['nama']; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_SESSION['username']; ?>!</b></h2>
     </div>
 
     <div>
     <?php
         $no = 1;
-        date_default_timezone_set('Asia/Hong_Kong');
+        //date_default_timezone_set('Asia/Hong_Kong');
         $tanggal_sekarang = date("Y-m-d");
-        //echo $id;
 
 
         $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
-        WHERE periksa.tanggal_periksa = '$tanggal_sekarang' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter") or die (mysqli_error($koneksiDB));
+        WHERE periksa.tanggal_periksa = '$tanggal_sekarang' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter AND periksa.id_dokter = '$id'") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata);
 

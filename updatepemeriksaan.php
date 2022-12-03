@@ -2,8 +2,8 @@
 
 <?php
     include "C:/xampp/htdocs/tubes_sik/koneksiDB.php";
-    $sql=mysqli_query($koneksiDB,"Select * from tabel_periksa,tabel_dokter, tabel_pasien  
-    where tabel_periksa.id_periksa ='$_GET[update]' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter");
+    $sql=mysqli_query($koneksiDB,"Select * from periksa,dokter, pasien  
+    where periksa.id_periksa ='$_GET[update]' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter");
     $data=mysqli_fetch_array($sql);
 ?>
 
