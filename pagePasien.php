@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <html>
 
 <!-- HEAD -->
@@ -17,11 +19,16 @@
 
 </head>
 
+<!--Mengambil dari SESSION -->
+<?php 
+    $id =  $_SESSION['id'];
+    $username = $_SESSION['username'];
+?>
 
 <body>
     <div>
         <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithoutMenu.php"; ?>
+    <?php include "templates/navbarWithMenuPasien.php"; ?>
 
     </div>
 
@@ -30,17 +37,14 @@
     <div>
 
 
-    <?php 
-    session_start(); 
-    ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['nama']; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
     <br><br>
     <?php
-        require "D:/xampp/htdocs/tubes_sik/include/configDB.php";
+        require "C:/xampp/htdocs/tubes_sik/include/configDB.php";
         //nyoba ngambil user dari username session
        
-        $ambildata = mysqli_query($configDB, "select * from tabel_pasien, tabel_periksa, tabel_dokter
-        WHERE tabel_pasien.uname = '$user' AND tabel_periksa.id_dokter = tabel_dokter.id_dokter") or die (mysqli_error($koneksiDB));
+        $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
+        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
