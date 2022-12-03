@@ -159,7 +159,7 @@ if (isset($_POST['data_pasien'])) {
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($id_pasien)) { array_push($errors, "Id pasien harus diisi."); }
-  if (empty($nama_pasien)) { array_push($errors, "Email harus diisi."); }
+  if (empty($nama_pasien)) { array_push($errors, "Nama harus diisi."); }
   if (empty($alamat)) { array_push($errors, "Alamat harus diisi."); }
   if (empty($tanggal_lahir)) { array_push($errors, "Tanggal Lahir harus diisi."); }
   if (empty($jenis_kelamin)) { array_push($errors, "Jenis Kelamin harus diisi."); }
@@ -190,6 +190,55 @@ if (isset($_POST['data_pasien'])) {
     //pembagian header sesuai dengan role masing-masing user
     echo "Pemasukan data pasien berhasil!";
     header('location: regdataPasien.php');
+
+  	
+  }
+}
+
+//Tambah data dokter
+$id_dokter = null;
+$nama_dokter    = "";
+$poli_dokter="";
+$spesialisasi="";
+$errors = array();
+
+if (isset($_POST['data_dokter'])) {
+  // receive all input values from the form
+  $id_dokter  = mysqli_real_escape_string($configDB, $_POST['id_dokter']);
+  $nama_dokter = mysqli_real_escape_string($configDB, $_POST['nama_dokter']);
+  $poli_dokter = mysqli_real_escape_string($configDB, $_POST['poli_dokter']);
+  $spesialisasi = mysqli_real_escape_string($configDB, $_POST['spesialisasi']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($id_dokter)) { array_push($errors, "Id dokter harus diisi."); }
+  if (empty($nama_dokter)) { array_push($errors, "Nama harus diisi."); }
+  if (empty($poli_dokter)) { array_push($errors, "Poli harus diisi."); }
+  if (empty($spesialisasi)) { array_push($errors, "Spesialisasi harus diisi."); }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM dokter WHERE id='$id_dokter'";
+  $result = mysqli_query($configDB, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    //pengecekan apakah data user sudah diisi atau belum ini masih blmbener
+    if ($user['id'] === $id_dokter) {
+      array_push($errors, "Data dokter sudah diisi.");
+    }
+  }
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	$password = md5($password_1);//encrypt the password before saving in the database
+
+  	$query = "INSERT INTO dokter (id, nama_dokter, poli, spesialisasi) 
+  			  VALUES($id_dokter, '$nama_dokter', '$poli_dokter', '$spesialisasi')";
+  	mysqli_query($configDB, $query);
+    //pembagian header sesuai dengan role masing-masing user
+    echo "Pemasukan data pasien berhasil!";
+    header('location: regdataDokter.php');
 
   	
   }
