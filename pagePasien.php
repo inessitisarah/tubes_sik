@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+    session_start(); 
+    require "include/configDB.php";
 if($_SESSION['role']!='pasien'){
     header('location: errorRedirect.php');
 }
@@ -33,22 +35,24 @@ if($_SESSION['role']!='pasien'){
     <div>
         <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithMenuPasien.php"; ?>
-
     </div>
-
-
+    
     <br><br><br><br>
     <div>
 
-
-    <h2 class="w3-center"><b>Selamat datang <?php echo $_SESSION['username']; ?>!</b></h2>
-    <br><br>
+    <!-- Buat menampilkan nama -->
     <?php
-        require "C:/xampp/htdocs/tubes_sik/include/configDB.php";
-        //nyoba ngambil user dari username session
-       
+        $ambilnama = mysqli_query($configDB, "select * from pasien WHERE pasien.id = '$id' ") or die (mysqli_error($koneksiDB));
+        $hasilquery = mysqli_fetch_array($ambilnama);
+    ?>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $hasilquery['nama_pasien']; ?>!</b></h2>
+    <br><br>
+
+    <!--Mengambil data pemeriksaan -->
+    <?php       
         $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
-        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id") or die (mysqli_error($koneksiDB));
+        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id
+        ORDER BY periksa.tanggal_periksa DESC LIMIT 1") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 

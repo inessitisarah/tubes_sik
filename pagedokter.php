@@ -3,7 +3,13 @@
 if($_SESSION['role']!='dokter'){
     header('location: errorRedirect.php');
 }
+
+    $id =  $_SESSION['id'];
+    $username = $_SESSION['username'];
+
+    include "include/configDB.php";
 ?>
+
 
 <html>
 <!-- HEAD -->
@@ -31,21 +37,20 @@ if($_SESSION['role']!='dokter'){
     <?php include "templates/sidebarDokter.php"; ?>
     </div>
 
+    <!-- Buat menampilkan nama -->
+    <?php
+        $ambilnama = mysqli_query($configDB, "select * from dokter WHERE dokter.id = '$id' ") or die (mysqli_error($configDB));
+        $hasilquery = mysqli_fetch_array($ambilnama);
+    ?>
+
+    <div>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $hasilquery['nama_dokter']; ?>!</b></h2>
+    <br><br>
+    </div>
+
 
     <div>
     <!--nyoba ngambil user dari username session -->
-    <?php 
-    $id =  $_SESSION['id'];
-    $username = $_SESSION['username'];
-    ?>
-
-    <?php
-        include "include/configDB.php";
-    ?>
-
-    <br><br><br><br>
-    <h2 class="w3-center"><b>Selamat Datang Dokter <?php echo $_SESSION['username']; ?>!</b></h2>
-    </div>
 
     <div>
     <?php
