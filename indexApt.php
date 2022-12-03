@@ -1,5 +1,13 @@
 <!-- Start Session -->
-<?php session_start() ?>
+<?php session_start();
+    if(!isset($_SESSION['role'])){
+      header("location: index.php");
+    }else if ($_SESSION['role']!='apoteker'){
+      header('location: errorRedirect.php');
+
+  } 
+
+?>
 <!-- Connect to the DB -->
 <?php 
 include "include/configDB.php";
