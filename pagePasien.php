@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php session_start();
+if($_SESSION['role']!='pasien'){
+    header('location: errorRedirect.php');
+}
+?>
 
 <html>
 

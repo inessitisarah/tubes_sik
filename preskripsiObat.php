@@ -1,8 +1,11 @@
 <!-- Connect to the DB -->
 <?php 
 include "include/configDB.php";
-
- ?>
+session_start();
+if($_SESSION['role']!='apoteker'){
+    header('location: errorRedirect.php');
+}
+?>
 
 <!DOCTYPE html>
 <html>

@@ -1,6 +1,9 @@
 <!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
-<?php session_start() ?>
-
+<?php session_start();
+if($_SESSION['role']!='dokter'){
+    header('location: errorRedirect.php');
+}
+?>
 
 <html>
 <!-- HEAD -->
