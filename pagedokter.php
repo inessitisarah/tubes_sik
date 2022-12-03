@@ -81,7 +81,7 @@
                     <tr>
                         <td>$no</td>
                         <td>$tampil[tanggal_periksa]</td>
-                        <td>$tampil[nama]</td>
+                        <td>$tampil[nama_pasien]</td>
                         <td>$tampil[diagnosis]</td>
                         <td>$tampil[preskripsi_obat]</td>
                         <td>$tampil[id_periksa]</td>

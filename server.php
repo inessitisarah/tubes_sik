@@ -1,6 +1,5 @@
 <?php
 session_start();
-ob_start();
 include "include/configDB.php";
 
  
@@ -61,7 +60,7 @@ if (isset($_POST['reg_user'])) {
       header('location: pagePasien.php');
     }
     else if ($role=="dokter"){
-      header('location:pagedokter.php');
+      header('location: pagedokter.php');
     }
     else if ($role=="apoteker"){
       header('location: pageApoteker.php');
@@ -126,8 +125,7 @@ if (isset($_POST['login_user'])) {
         $ambildata=mysqli_query($configDB, $query);
         $user=mysqli_fetch_assoc($ambildata);
         $_SESSION['nama']=$user['nama'];
-        ob_start();
-        header('location:pagedokter.php');
+        header('location: pagedokter.php');
         
       }
       else if ($user['role']==="apoteker"){

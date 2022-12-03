@@ -33,6 +33,13 @@
     </style>
 </head>
 
+<!-- INISIALISASI VARIABEL -->
+
+<?php 
+    $tanggal_sekarang = date("Y-m-d");
+    $usia = date_diff(date_create($data['tanggal_lahir']), date_create($tanggal_sekarang));
+?>
+
 <!-- BODY -->
 <body>
     <!-- Navbar (sit on top) -->
@@ -47,17 +54,28 @@
     <form class="w3-center-container w3-card-4" action="" method="post">
         <table>
             <tr>
-                <td width="100">Nama</td>
+                <td width="150"><b>Nama</b></td>
                 <td><?php echo $data['nama_pasien']; ?></td>
+            </tr>
+
+            <tr>
+                <td width="150"><b>Usia</b></td>
+                <td><?php echo $usia->format('%y');
+                echo " tahun"; ?></td>
             </tr>
             
             <tr>
-                <td>Diagnosis</td>
+                <td width="150"><b>Golongan Darah</b></td>
+                <td><?php echo $data['golongan_darah']; ?></td>
+            </tr>
+
+            <tr>
+                <td><b>Diagnosis</b></td>
                 <td><input class="w3-input w3-border" type="text" name="diagnosis" size="30" value="<?php echo $data['diagnosis']; ?>"></td>
             </tr>
             
             <tr>
-                <td>Preskripsi Obat</td>
+                <td><b>Preskripsi Obat</b></td>
                 <td><input class="w3-input w3-border" type="text" name="preskripsi_obat" size="30" value="<?php echo $data['preskripsi_obat']; ?>"></td>
             </tr>
         
