@@ -123,7 +123,7 @@ if (isset($_POST['login_user'])) {
         $ambildata=mysqli_query($configDB, $query);
         $user=mysqli_fetch_assoc($ambildata);
         $_SESSION['nama']=$user['nama'];
-        header('location: pagedokter.php');
+        header('location: http://localhost/tubes_sik/pagedokter.php');
         
       }
       else if ($user['role']==="apoteker"){

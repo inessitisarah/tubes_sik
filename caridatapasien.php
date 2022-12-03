@@ -1,4 +1,9 @@
-<?php session_start() ?>
+<?php 
+    session_start(); 
+    include "C:/xampp/htdocs/tubes_sik/include/configDB.php";
+    $id =  $_SESSION['id'];
+    $no = 1;
+?>
 
 <html>
 <!-- HEAD -->
@@ -22,19 +27,66 @@
         <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter.php"; ?>
     </div>
 
+    <br><br><br>
+    <h3 class="w3-center"><b>Pencarian Data Pemeriksaan</b></h3>
+    <br> 
+
+    <h5 class="w3-center">Masukkan ID Pasien Anda: </h5>
+
     <div>
-        <?php
-        include "C:/xampp/htdocs/tubes_sik/include/configDB.php";
-        $no = 1;
-
-
-        $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
-        WHERE dokter.id = '$id' AND tabel_periksa.tanggal_periksa = '$tanggal_sekarang' AND tabel_periksa.id_pasien = tabel_pasien.id_pasien AND tabel_dokter.id_dokter = tabel_periksa.id_dokter") or die (mysqli_error($koneksiDB));
-        ?>
-        
+        <form class="example" method = "get" action="" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="ID Pasien" name="searchedID">
+        <button type="submit"><i class="fa fa-search"></i></button>
     </div>
-    
-    
+
+    <?php
+    if (isset($_GET['searchedID'])) {
+        $query = mysqli_query($configDB, "SELECT * FROM periksa 
+        WHERE periksa.id_dokter = '$id' AND periksa.id_pasien LIKE '%".$_GET['searchedID']."%'");
+
+        $num_rows = mysqli_num_rows($query);
+
+        if ($num_rows == 0) {
+            echo "Pasien belum pernah melakukan pemeriksaan";
+        } 
+
+        else {
+            ?>
+                <table class="w3-table w3-striped w3-border">
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal Periksa</th>
+                    <th>Riwayat Diagnosis</th>
+                    <th>Riwayat Preskripsi Obat</th>
+                </tr>
+                <?php
+                while ($hasilquery = mysqli_fetch_array($query)) {
+                echo "
+                    <tr>
+                        <td>$no</td>
+                        <td>$hasilquery[tanggal_periksa]</td>
+                        <td>$hasilquery[diagnosis]</td>
+                        <td>$hasilquery[preskripsi_obat]</td>
+                    </tr>";
+                $no++;
+            }
+        }
+    }
+
+    ?>
+
+
+
+    <br><br>
+
+    <div>
+    <!-- Footer -->
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
+
+    <!-- Script -->
+    <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
+    </div>
 
 
 </body>
+</html>

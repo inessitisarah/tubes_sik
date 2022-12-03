@@ -1,11 +1,8 @@
 <!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
 <?php session_start();
-    if(!isset($_SESSION['role'])){
-        header("location: index.php");
-    }else if ($_SESSION['role']!='dokter'){
-        header('location: errorRedirect.php');
-
-    } 
+    //if($_SESSION['role']!='dokter'){
+        //header('location: errorRedirect.php');
+    //}
 
     $id =  $_SESSION['id'];
     $username = $_SESSION['username'];
@@ -49,7 +46,7 @@
 
     <br><br><br>
     <div>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $hasilquery['nama_dokter']; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat datang Dokter <?php echo $hasilquery['nama_dokter']; ?>!</b></h2>
     <br><br>
     </div>
 
