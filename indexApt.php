@@ -35,13 +35,11 @@ include "include/configDB.php";
 <!-- BODY -->
 <body>
     <!-- Navbar (sit on top) -->
-    <div>
     <?php include "templates/navbarWithMenuApoteker.php"; ?>
-    </div>
+
     <!-- Sidebar (hidden by default) -->
-    <div>
     <?php include "templates/sidebarApoteker.php"; ?>
-    </div>
+    
     <!-- Header with full-height image -->
     <?php include "templates/headerHome.php"; ?>
     <!---------- ALL USER ---------->

@@ -19,17 +19,17 @@
 </head>
 
 <body>
-	<h3>Registrasi</h3>
+	<h3>Data Pasien</h3>
 
   <div class="w3-center">
-  	<h3>Registrasi</h3>
+  	<h3>Data Pasien</h3>
   </div>
   <div class="w3-center">
-  <form method="post" action="register.php">
+  <form method="post" action="regdataPasien.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
-  	  <label>Username Pasien</label>
-  	  <input type="text" name="username" value="<?php echo $username; ?>">
+  	  <label>Id Pasien</label>
+  	  <input type="integer" name="id_pasien" value="<?php echo $id_pasien; ?>">
   	</div>
   	<div class="input-group">
   	  <label>Nama Pasien</label>
@@ -57,12 +57,9 @@
     </select>
     
   	<div class="input-group">
-  	  <button type="submit" class="btn" name="data_pasien">Register</button>
+  	  <button type="submit" class="btn" name="data_pasien">Submit</button>
   	</div>
     
-  	<p>
-  		Sudah registrasi? <a href="login.php">Login</a>
-  	</p>
   </form>
   </div>
 </body>
