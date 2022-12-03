@@ -35,6 +35,7 @@
     <!-- Sidebar (hidden by default) -->
     <?php include "templates/sidebarDokter.php"; ?>
     </div>
+    
 
     <!-- Buat menampilkan nama -->
     <?php
@@ -42,6 +43,7 @@
         $hasilquery = mysqli_fetch_array($ambilnama);
     ?>
 
+    <br><br><br>
     <div>
     <h2 class="w3-center"><b>Selamat datang <?php echo $hasilquery['nama_dokter']; ?>!</b></h2>
     <br><br>
