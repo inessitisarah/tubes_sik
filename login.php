@@ -1,7 +1,5 @@
 <!-- Connect to the DB -->
 <?php include "include/configDB.php"; ?>
-<?php include "templates/navbarWithoutMenu.php"; ?>
-<?php include "templates/style.php"; ?>
 <?php include "server.php"; ?>
 
 <!DOCTYPE html>
@@ -21,19 +19,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "templates/style.php"; ?>
+    <?php 
+    include "templates/style.php"; 
+    include "templates/navbarWithoutMenuLoginReg.php";
+    ?>
+</head>
 
 
 
-
+ <!-- BODY -->
 
 <body>
     
     <h3>LOGIN</h3>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-
-
 
      <form  method="post" action="login.php">
 

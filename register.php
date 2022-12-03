@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registrasi</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,13 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "templates/style.php"; ?>
+    <?php 
+	include "templates/style.php"; 
+	include "templates/navbarWithoutMenuLoginReg.php";
+	?>
 
 </head>
 
 <body>
+	<h3>Registrasi</h3>
+
   <div class="w3-center">
-  	<h2>Registrasi</h2>
+  	<h3>Registrasi</h3>
   </div>
   <div class="w3-center">
   <form method="post" action="register.php">
@@ -56,4 +60,6 @@
   </form>
   </div>
 </body>
+<?php include "templates/footer.php"; ?>
+
 </html>

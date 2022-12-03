@@ -35,14 +35,15 @@ include "include/configDB.php";
 <!-- BODY -->
 <body>
     <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithMenu.php"; ?>
-
+    <div>
+    <?php include "templates/navbarWithMenuApoteker.php"; ?>
+    </div>
     <!-- Sidebar (hidden by default) -->
+    <div>
     <?php include "templates/sidebarApoteker.php"; ?>
-
+    </div>
     <!-- Header with full-height image -->
     <?php include "templates/headerHome.php"; ?>
-
     <!---------- ALL USER ---------->
 
     <!-- 'Tentang Kami' Section -->
