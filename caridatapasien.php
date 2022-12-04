@@ -1,6 +1,6 @@
 <?php 
     session_start(); 
-    include "C:/xampp/htdocs/tubes_sik/include/configDB.php";
+    include "include/configDB.php";
     $id =  $_SESSION['id'];
     $no = 1;
 ?>
@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+    <?php include "templates/style.php"; ?>
 </head>
 
 <body>
     <div>
         <!-- Navbar (sit on top) -->
-        <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter2.php"; ?>
+        <?php include "templates/navbarWithMenuDokter2.php"; ?>
     </div>
 
     <br><br><br>
@@ -88,10 +88,10 @@
 
     <div>
     <!-- Footer -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
+    <?php include "templates/footer.php"; ?>
 
     <!-- Script -->
-    <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
+    <?php include "include/script.php"; ?>
     </div>
 
 

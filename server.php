@@ -180,6 +180,9 @@ if (isset($_POST['data_pasien'])) {
     if ($user['id'] === $id_pasien) {
       array_push($errors, "Data pasien sudah diisi.");
     }
+    if($user['role']!="pasien"){
+      array_push($errors, "Id yang Anda isi bukan id pasien.");
+    }
   }
 
   // Finally, register user if there are no errors in the form
@@ -230,6 +233,22 @@ if (isset($_POST['data_dokter'])) {
       array_push($errors, "Data dokter sudah diisi.");
     }
   }
+
+    // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM user_credentials WHERE user_id='$id_dokter'";
+  $result = mysqli_query($configDB, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    //pengecekan apakah data user sudah diisi atau belum ini masih blmbener
+    if ($user['role'] != "dokter") {
+      array_push($errors, "Id yang Anda isi bukan id dokter.");
+    }
+  }
+
+  
+  
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
