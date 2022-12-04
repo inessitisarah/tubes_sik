@@ -121,14 +121,16 @@
           <tr class="w3-light-grey">
             <th>Poliklinik</th>
             <th>Nama Dokter</th>
-            <th>Jadwal Praktek</th>
             <th>Spesialisasi</th>
+            <th>Hari</th>
+            <th>Jam Mulai</th>
+            <th>Jam Selesai</th>
           </tr>
         </thead>
 
         <!-- PHP CODE TO FETCH DATA FROM ROWS -->
         <?php
-                $sql = mysqli_query($configDB,"SELECT * FROM dokter order by poli ASC");
+                $sql = mysqli_query($configDB,"SELECT poli,nama_dokter,spesialisasi,hari,waktu_mulai,waktu_selesai FROM dokter,jadwal_dokter WHERE dokter.id = jadwal_dokter.id order by poli ASC");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
@@ -141,6 +143,8 @@
                 <td><?php echo $row[1];?></td>
                 <td><?php echo $row[2];?></td>
                 <td><?php echo $row[3];?></td>
+                <td><?php echo $row[4];?></td>
+                <td><?php echo $row[5];?></td>
         </tr>
         <?php
                 }

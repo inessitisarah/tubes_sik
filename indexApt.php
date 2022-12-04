@@ -1,13 +1,3 @@
-<!-- Start Session -->
-<?php session_start();
-    if(!isset($_SESSION['role'])){
-      header("location: index.php");
-    }else if ($_SESSION['role']!='apoteker'){
-      header('location: errorRedirect.php');
-
-  } 
-
-?>
 <!-- Connect to the DB -->
 <?php 
 include "include/configDB.php";
@@ -25,7 +15,7 @@ include "include/configDB.php";
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-    <link rel="sWtylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
@@ -35,13 +25,14 @@ include "include/configDB.php";
 <!-- BODY -->
 <body>
     <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithMenuApoteker.php"; ?>
+    <?php include "templates/navbarWithMenu.php"; ?>
 
     <!-- Sidebar (hidden by default) -->
     <?php include "templates/sidebarApoteker.php"; ?>
-    
+
     <!-- Header with full-height image -->
     <?php include "templates/headerHome.php"; ?>
+
     <!---------- ALL USER ---------->
 
     <!-- 'Tentang Kami' Section -->
@@ -136,14 +127,16 @@ include "include/configDB.php";
           <tr class="w3-light-grey">
             <th>Poliklinik</th>
             <th>Nama Dokter</th>
-            <th>Jadwal Praktek</th>
             <th>Spesialisasi</th>
+            <th>Hari</th>
+            <th>Jam Mulai</th>
+            <th>Jam Selesai</th>
           </tr>
         </thead>
 
         <!-- PHP CODE TO FETCH DATA FROM ROWS -->
         <?php
-                $sql = mysqli_query($configDB,"SELECT poli,nama,spesialisasi FROM dokter order by poli ASC");
+                $sql = mysqli_query($configDB,"SELECT poli,nama_dokter,spesialisasi,hari,waktu_mulai,waktu_selesai FROM dokter,jadwal_dokter WHERE dokter.id = jadwal_dokter.id order by poli ASC");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
@@ -156,6 +149,8 @@ include "include/configDB.php";
                 <td><?php echo $row[1];?></td>
                 <td><?php echo $row[2];?></td>
                 <td><?php echo $row[3];?></td>
+                <td><?php echo $row[4];?></td>
+                <td><?php echo $row[5];?></td>
         </tr>
         <?php
                 }
@@ -165,7 +160,7 @@ include "include/configDB.php";
   </div>
 </div>  
 
-    <!-- Footer -->
+    <!--  Footer -->
     <?php include "templates/footer.php"; ?>
 
     <!-- Script -->

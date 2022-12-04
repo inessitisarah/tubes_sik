@@ -6,7 +6,7 @@ function function_alert($nama, $stok) {
       
     // Display the alert box 
     echo "<script>alert('Obat $nama sudah terdaftar dan memiliki stok sejumlah $stok');
-        window.location.href= '../indexApt.php#stok'
+        window.location.href= '../stokObat.php#stok'
         </script>";
 }
 

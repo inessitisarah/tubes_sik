@@ -46,8 +46,8 @@ if($_SESSION['role']!='apoteker'){
         <thead>
           <tr class="w3-light-grey">
             <th>Waktu Pemeriksaan</th>
-            <th>Preskripsi Obat</th>
             <th>Nama Pasien</th>
+            <th>Preskripsi Obat</th>
           </tr>
         </thead>
 
@@ -56,7 +56,7 @@ if($_SESSION['role']!='apoteker'){
                 //nama pasien blm bisa diambil, karena data nama pasien masih di tabel pasien
                 //hrs dibikin query buat ngambilnya
                 
-                $sql = mysqli_query($configDB,"SELECT timestamp,preskripsi_obat,nama_pasien FROM periksa,pasien WHERE periksa.id_pasien = pasien.id_pasien  order by time_stamp DESC LIMIT 3");
+                $sql = mysqli_query($configDB,"SELECT time_stamp,nama_pasien,preskripsi_obat FROM periksa,pasien WHERE periksa.id_pasien = pasien.id_pasien  order by time_stamp DESC LIMIT 10");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
@@ -78,7 +78,7 @@ if($_SESSION['role']!='apoteker'){
         </div>
 
         <div class="w3-row-padding" style="margin-top:32px">
-        <p class="w3-center">Menampilkan 3 Data Preskripsi Obat Terbaru.</p>
+        <p class="w3-center">Menampilkan 10 Data Preskripsi Obat Terbaru.</p>
         </div>
     </div>
 
