@@ -1,9 +1,12 @@
 <?php 
     session_start(); 
     require "include/configDB.php";
-    //if($_SESSION['role']!='pasien'){
+    //if(!isset($_SESSION['role'])){
+        //header("location: index.php");
+    //}else if ($_SESSION['role']!='pasien'){
         //header('location: errorRedirect.php');
-    //}
+
+    //} 
 ?>
 
 <html>
@@ -57,15 +60,18 @@
         $num_rows = mysqli_num_rows($ambildata); 
 
         if ($num_rows == 0){ ?>
-            <h3 class="w3-center">Anda Belum Melakukan Pemeriksaan</h3>
+            <h3 class="w3-center">Anda Belum Melakukan Reservasi Pemeriksaan</h3>
+            <div>
+            <a href="./tambahPemeriksaan.php" class="w3-btn w3-round w3-teal">Reservasi</a>
+            </div>
             <?php
         }
 
         else{
             ?>
-            <h3 class="w3-center">Berikut Riwayat Pemeriksaan Anda</h3>
+            <h3 class="w3-center">Berikut Reservasi Anda:</h3>
             <br><br>
-            <table class="w3-table w3-striped w3-border" align="center">
+            <table class="w3-center w3-table w3-striped w3-border" align="center">
                 <tr>
                     <th>Dokter</th>
                     <th>Tanggal Periksa</th>

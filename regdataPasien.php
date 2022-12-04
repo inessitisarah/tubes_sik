@@ -1,4 +1,14 @@
-<?php include('server.php') ?>
+<?php 
+include('server.php');
+session_start();
+if(!isset($_SESSION['role'])){
+      header("location: index.php");
+    }else if ($_SESSION['role']!='admin'){
+      header('location: errorRedirect.php');
+
+  }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
