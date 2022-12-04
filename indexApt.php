@@ -1,8 +1,21 @@
 <!-- Connect to the DB -->
-<?php 
-include "include/configDB.php";
+ <!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
+<?php session_start();
+    //if($_SESSION['role']!='dokter'){
+        //header('location: errorRedirect.php');
+    //}
+    if(!isset($_SESSION['role'])){
+        header("location: index.php");
+    }else if ($_SESSION['role']!='dokter'){
+        header('location: errorRedirect.php');
 
- ?>
+    } 
+
+    $id =  $_SESSION['id'];
+    $username = $_SESSION['username'];
+
+    include "include/configDB.php";
+?>
 
 <!DOCTYPE html>
 <html>
