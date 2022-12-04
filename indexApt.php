@@ -6,7 +6,7 @@
     //}
     if(!isset($_SESSION['role'])){
         header("location: index.php");
-    }else if ($_SESSION['role']!='dokter'){
+    }else if ($_SESSION['role']!='apoteker'){
         header('location: errorRedirect.php');
 
     } 
