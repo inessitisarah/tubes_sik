@@ -49,13 +49,14 @@
         $hasilquery = mysqli_fetch_array($ambilnama);
     ?>
     <h2 class="w3-center"><b>Selamat datang <?php echo $hasilquery['nama_pasien']; ?>!</b></h2>
-    <br><br>
+    <br>
 
     <!--Mengambil data pemeriksaan -->
-    <?php       
-        $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
-        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id
-        ORDER BY periksa.tanggal_periksa DESC LIMIT 1") or die (mysqli_error($koneksiDB));
+    <?php
+        $no = 1;       
+        $ambildata = mysqli_query($configDB, "SELECT * from pasien, periksa, dokter
+        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id AND periksa.tanggal_periksa >= $tanggal_sekarang
+        ORDER BY periksa.tanggal_periksa DESC") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
@@ -70,26 +71,29 @@
         else{
             ?>
             <h3 class="w3-center">Berikut Reservasi Anda:</h3>
-            <br><br>
-            <table class="w3-center w3-table w3-striped w3-border" align="center">
+            <br>
+            <table class="w3-center w3-table w3-striped w3-border" style="width:50%" align = "center">
                 <tr>
+                    <th>No</th>
                     <th>Dokter</th>
                     <th>Tanggal Periksa</th>
-                    <th>Diagnosis</th>
-                    <th>Preskripsi Obat</th>
                 </tr>
                 <?php
                 while ($tampil = mysqli_fetch_array($ambildata)){
                     echo "
                     <tr>
+                        <td>$no</td>
                         <td>$tampil[nama_dokter]</td>
                         <td>$tampil[tanggal_periksa]</td>
-                        <td>$tampil[diagnosis]</td>
-                        <td>$tampil[preskripsi_obat]</td>
                     </tr>";
+                    $no++;
                 }
                 ?>
             </table>
+            <div class="w3-center">
+            <br>
+            <a href="./tambahPemeriksaan.php" class="w3-btn w3-round w3-teal">Tambahkan Reservasi</a>
+            </div>
             <?php
         }
     ?>
