@@ -105,11 +105,19 @@
             $id_dokter_searched = $hasilGetDokterID['id'];
         }
 
+        $getNoAntrian = mysqli_query($configDB, "SELECT * FROM periksa 
+        WHERE periksa.id_dokter = '$id_dokter_searched' AND periksa.tanggal_periksa = '$tanggal_periksa'");
+
+        while ($hasilGetNoAntrian = mysqli_fetch_array($getNoAntrian)){
+            $no_antrian = $hasilGetNoAntrian['no_antrian'];
+        }
+        $no_antrian++;
+
 
         //variabel query adalah variabel yang menyimpan perintah sql dml
-        $query = mysqli_query($configDB, "INSERT INTO periksa (id_dokter, id_pasien, tanggal_periksa) VALUES ('$id_dokter_searched', '$id_pasien', '$tanggal_periksa')");
+        $query = mysqli_query($configDB, "INSERT INTO periksa (id_dokter, id_pasien, tanggal_periksa, no_antrian) VALUES ('$id_dokter_searched', '$id_pasien', '$tanggal_periksa', '$no_antrian')");
         if ($query) {
-            echo "<script>alert('Registrasi Pemeriksaan Berhasil!');
+            echo "<script>alert('Registrasi Pemeriksaan Berhasil. No Antrian: $no_antrian!');
             document.location='pagePasien.php'</script>";
         } else {
             echo "Input Gagal";
