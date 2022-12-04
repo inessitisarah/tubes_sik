@@ -56,7 +56,7 @@ if($_SESSION['role']!='apoteker'){
                 //nama pasien blm bisa diambil, karena data nama pasien masih di tabel pasien
                 //hrs dibikin query buat ngambilnya
                 
-                $sql = mysqli_query($configDB,"SELECT time_stamp,nama_pasien,preskripsi_obat FROM periksa,pasien WHERE periksa.id_pasien = pasien.id_pasien  order by time_stamp DESC LIMIT 10");
+                $sql = mysqli_query($configDB,"SELECT time_stamp,nama_pasien,preskripsi_obat FROM periksa,pasien WHERE periksa.id_pasien = pasien.id  order by time_stamp DESC LIMIT 10");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
