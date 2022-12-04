@@ -24,7 +24,7 @@
 <body>
     <div>
         <!-- Navbar (sit on top) -->
-        <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter.php"; ?>
+        <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter2.php"; ?>
     </div>
 
     <br><br><br>
@@ -47,12 +47,17 @@
         $num_rows = mysqli_num_rows($query);
 
         if ($num_rows == 0) {
-            echo "Pasien belum pernah melakukan pemeriksaan";
+            ?> 
+            <br>
+            <h5 class="w3-center">Pasien belum pernah melakukan pemeriksaan</h5>
+            <?php
         } 
 
         else {
             ?>
-                <table class="w3-table w3-striped w3-border">
+                <br>
+                <div class="w3-center">
+                <table class="w3-center w3-table w3-striped w3-border" style="width: 50%" align = "center">
                 <tr>
                     <th>No</th>
                     <th>Tanggal Periksa</th>
@@ -74,6 +79,8 @@
     }
 
     ?>
+    </table>
+    </div>
 
 
 

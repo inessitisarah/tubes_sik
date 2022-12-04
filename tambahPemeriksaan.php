@@ -59,6 +59,7 @@
     </table>
     <br><br><br>
 
+    <div class="w3-center">
     <form action="" method="post">        
         <table class="w3-center">
             <tr>
@@ -81,13 +82,16 @@
   	        <input type="date" name="tanggal_periksa" >
   	        </div>
 
+            <div class="w3-center">
             <tr>
                 <td></td>
-                <td><input class="w3-btn w3-round w3-teal"type="submit" value="Register" name="proses"></td>
+                <td><input class="w3-btn w3-round w3-teal w3-center"type="submit" value="Register" name="proses"></td>
             </tr>
+            </div>
 
         </table>
     </form>
+    </div>
     <br><br><br><br>
 
     <?php
@@ -105,7 +109,8 @@
         //variabel query adalah variabel yang menyimpan perintah sql dml
         $query = mysqli_query($configDB, "INSERT INTO periksa (id_dokter, id_pasien, tanggal_periksa) VALUES ('$id_dokter_searched', '$id_pasien', '$tanggal_periksa')");
         if ($query) {
-            echo "Data Berhasil Ditambahkan";
+            echo "<script>alert('Registrasi Pemeriksaan Berhasil!');
+            document.location='pagePasien.php'</script>";
         } else {
             echo "Input Gagal";
         }
