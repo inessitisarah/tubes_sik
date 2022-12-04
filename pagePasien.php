@@ -1,12 +1,12 @@
 <?php 
     session_start(); 
     require "include/configDB.php";
-    //if(!isset($_SESSION['role'])){
-        //header("location: index.php");
-    //}else if ($_SESSION['role']!='pasien'){
-        //header('location: errorRedirect.php');
+    if(!isset($_SESSION['role'])){
+        header("location: index.php");
+    }else if ($_SESSION['role']!='pasien'){
+        header('location: errorRedirect.php');
 
-    //} 
+    } 
 ?>
 
 <html>
