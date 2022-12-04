@@ -4,4 +4,5 @@
   class="w3-bar-item w3-button">Close Menu</a>
   <a href="./regdataPasien.php" onclick="w3_close()" class="w3-bar-item w3-button">Registrasi Data Pasien</a>
   <a href="./regdataDokter.php" onclick="w3_close()" class="w3-bar-item w3-button">Registrasi Data Dokter</a>
+  <a href="./pagedataUser.php" onclick="w3_close()" class="w3-bar-item w3-button">Data User</a>
 </nav>

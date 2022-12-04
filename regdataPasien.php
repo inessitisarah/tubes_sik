@@ -22,53 +22,61 @@ if(!isset($_SESSION['role'])){
 
     <!-- STYLE -->
     <?php 
-	include "templates/style.php"; 
-	include "templates/navbarWithoutMenuLoginReg.php";
-	?>
+	  include "templates/style.php"; 
+	  ?>
 
 </head>
 
 <body>
+    <!-- Navbar (sit on top) -->
+  <?php include "templates/navbarWithMenuAdmin.php"; ?>
+
+    <!-- Sidebar (hidden by default) -->
+  <?php include "templates/sidebarAdmin.php"; ?>
+
+    <!-- Header with full-height image -->
+  <?php include "templates/headerHome.php"; ?>
+
   <div class="w3-center">
   	<h3>Data Pasien</h3>
   </div>
   <div class="w3-center">
-  <form method="post" action="regdataPasien.php">
-  	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  	  <label>Id Pasien</label>
-  	  <input type="integer" name="id_pasien" value="<?php echo $id_pasien; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Nama Pasien</label>
-  	  <input type="text" name="nama_pasien" value="<?php echo $nama_pasien; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Alamat</label>
-  	  <input type="text" name="alamat" value="<?php echo $alamat; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Tanggal Lahir</label>
-  	  <input type="date" name="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>">
-  	</div>
-	<select name="jenis_kelamin">
-      <option value="" disabled selected>Jenis Kelamin</option>
-      <option value="Pria">Pria</option>
-      <option value="Wanita">Wanita</option>
-    </select>
-    <select name="golongan_darah">
-      <option value="" disabled selected>Golongan Darah</option>
-      <option value="A">A</option>
-      <option value="B">B</option>
-      <option value="A">O</option>
-      <option value="B">AB</option>
-    </select>
-    
-  	<div class="input-group">
-  	  <button type="submit" class="btn" name="data_pasien">Submit</button>
-  	</div>
-    
-  </form>
+    <form method="post" action="regdataPasien.php" class="w3-center">
+      <?php include('errors.php'); ?>
+      <div class="input-group">
+        <input type="integer" class="w3-hover-shadow w3-input w3-center" name="id_pasien" placeholder="Id Pasien" value="<?php echo $id_pasien; ?>">
+      </div>
+      <div class="input-group">
+        <input type="text" class="w3-hover-shadow w3-input w3-center" name="nama_pasien" placeholder="Nama Pasien" value="<?php echo $nama_pasien; ?>">
+      </div>
+      <div class="input-group">
+        <input type="text" class="w3-hover-shadow w3-input w3-center" name="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>">
+      </div>
+      <div class="input-group">
+        <input type="date" class="w3-hover-shadow w3-input w3-center" name="tanggal_lahir" placeholder="Tanggal Lahir" value="<?php echo $tanggal_lahir; ?>">
+      </div>
+      <div>
+        <select class="w3-dropdown-click:hover w3-btn w3-round" name="jenis_kelamin">
+            <option value="" disabled selected>Jenis Kelamin</option>
+            <option value="Pria">Pria</option>
+            <option value="Wanita">Wanita</option>
+          </select>
+      </div>
+      <div>
+        <select class="w3-dropdown-click:hover w3-btn w3-round" name="golongan_darah">
+          <option value="" disabled selected>Golongan Darah</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="A">O</option>
+          <option value="B">AB</option>
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <button type="submit"  class="w3-btn w3-black w3-round" name="data_pasien">Submit</button>
+      </div>
+      
+    </form>
   </div>
 </body>
 <?php include "templates/footer.php"; ?>

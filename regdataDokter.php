@@ -24,28 +24,37 @@ if(!isset($_SESSION['role'])){
     <!-- STYLE -->
     <?php 
 	include "templates/style.php"; 
-	include "templates/navbarWithoutMenuLoginReg.php";
+
+
+
 	?>
 
 </head>
 
 <body>
+    <!-- Navbar (sit on top) -->
+    <?php include "templates/navbarWithMenuAdmin.php"; ?>
 
+    <!-- Sidebar (hidden by default) -->
+    <?php include "templates/sidebarAdmin.php"; ?>
+
+    <!-- Header with full-height image -->
+    <?php include "templates/headerHome.php"; ?>
+
+  <br></br>
   <div class="w3-center">
-  	<h3>Data Dokter</h3>
+  	<h2><b>Data Dokter</b></h2>
   </div>
   <div class="w3-center">
-  <form method="post" action="regdataDokter.php">
+  <form method="post" action="regdataDokter.php" class="w3-center">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
-  	  <label>Id Dokter</label>
-  	  <input type="integer" name="id_dokter" value="<?php echo $id_dokter; ?>">
+  	  <input type="integer" class="w3-hover-shadow w3-input w3-center" name="id_dokter" placeholder="Id Dokter" value="<?php echo $id_dokter; ?>">
   	</div>
   	<div class="input-group">
-  	  <label>Nama Dokter</label>
-  	  <input type="text" name="nama_dokter" value="<?php echo $nama_dokter; ?>">
+  	  <input type="text" class="w3-hover-shadow w3-input w3-center" name="nama_dokter" placeholder="Nama Dokter" value="<?php echo $nama_dokter; ?>">
   	</div>
-      <select name="poli_dokter">
+      <select name="poli_dokter" class="w3-dropdown-click:hover w3-btn w3-round">
       <option value="" disabled selected>Poli Dokter</option>
       <option value="Umum">Umum</option>
       <option value="Gigi dan Mulut">Gigi dan Mulut</option>
@@ -53,13 +62,12 @@ if(!isset($_SESSION['role'])){
       <option value="Keluarga Berencana">Keluarga Berencana</option>
     </select>
     <div class="spesialisasi">
-  	  <label>Spesialisasi Dokter</label>
-  	  <input type="text" name="spesialisasi" value="<?php echo $spesialisasi; ?>">
+  	  <input type="text" name="spesialisasi" class="w3-hover-shadow w3-input w3-center" placeholder="Spesialisasi" value="<?php echo $spesialisasi; ?>">
   	</div> 
+    <br></br>
   	<div class="input-group">
-  	  <button type="submit" class="btn" name="data_dokter">Submit</button>
-  	</div>
-    
+  	  <button type="submit" class="w3-btn w3-black w3-round" name="data_dokter">Submit</button>
+  	</div>    
   </form>
   </div>
 </body>

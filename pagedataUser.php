@@ -34,10 +34,15 @@
 ?>
 
 <body>
-    <div>
-        <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithMenuPasien.php"; ?>
-    </div>
+    <!-- Navbar (sit on top) -->
+    <?php include "templates/navbarWithMenuAdmin.php"; ?>
+
+    <!-- Sidebar (hidden by default) -->
+    <?php include "templates/sidebarAdmin.php"; ?>
+
+    <!-- Header with full-height image -->
+    <?php include "templates/headerHome.php"; ?>
+
     
     <br><br><br><br>
     <div>
@@ -61,7 +66,6 @@
         else{
             ?>
             <h3 class="w3-center">User Credentials</h3>
-            <br><br>
             <table class="w3-center w3-table w3-striped w3-border" align="center">
                 <tr>
                     <th>User Id</th>
@@ -81,6 +85,7 @@
                 }
                 ?>
             </table>
+            <br><br>
             <?php
         }
     ?>
@@ -99,7 +104,6 @@
         else{
             ?>
             <h3 class="w3-center">Pasien</h3>
-            <br><br>
             <table class="w3-center w3-table w3-striped w3-border" align="center">
                 <tr>
                     <th>Id Pasien</th>
@@ -124,6 +128,7 @@
                 }
                 ?>
             </table>
+            <br><br>
             <?php
         }
     ?>
@@ -141,7 +146,6 @@
         else{
             ?>
             <h3 class="w3-center">Dokter</h3>
-            <br><br>
             <table class="w3-center w3-table w3-striped w3-border" align="center">
                 <tr>
                     <th>Id Dokter</th>
@@ -161,6 +165,7 @@
                 }
                 ?>
             </table>
+            <br><br>
             <?php
         }
     ?>

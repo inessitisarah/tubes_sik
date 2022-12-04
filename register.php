@@ -16,6 +16,8 @@
 	<?php 
 	include "templates/style.php"; 
 	include "templates/navbarWithoutMenuLoginReg.php";
+	include "templates/headerlagi.php";
+
 	?>
    
 </head>
