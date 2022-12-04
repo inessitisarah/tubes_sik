@@ -1,12 +1,12 @@
 <?php 
     session_start(); 
     require "include/configDB.php";
-    if(!isset($_SESSION['role'])){
-        header("location: index.php");
-    }else if ($_SESSION['role']!='pasien'){
-        header('location: errorRedirect.php');
+    //if(!isset($_SESSION['role'])){
+        //header("location: index.php");
+    //}else if ($_SESSION['role']!='pasien'){
+        //header('location: errorRedirect.php');
 
-    } 
+    //} 
 ?>
 
 <html>
@@ -53,16 +53,18 @@
 
     <!--Mengambil data pemeriksaan -->
     <?php
-        $no = 1;       
+        $no = 1;
+        $tanggal_sekarang = date("Y-m-d");
+        //echo $tanggal_sekarang;
         $ambildata = mysqli_query($configDB, "SELECT * from pasien, periksa, dokter
-        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id AND periksa.tanggal_periksa >= $tanggal_sekarang
-        ORDER BY periksa.tanggal_periksa DESC") or die (mysqli_error($koneksiDB));
+        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id AND diagnosis = ''
+        ORDER BY periksa.tanggal_periksa ASC") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
 
         if ($num_rows == 0){ ?>
             <h3 class="w3-center">Anda Belum Melakukan Reservasi Pemeriksaan</h3>
-            <div>
+            <div class="w3-center">
             <a href="./tambahPemeriksaan.php" class="w3-btn w3-round w3-teal">Reservasi</a>
             </div>
             <?php
@@ -77,6 +79,7 @@
                     <th>No</th>
                     <th>Dokter</th>
                     <th>Tanggal Periksa</th>
+                    <th>No Antrian</th>
                 </tr>
                 <?php
                 while ($tampil = mysqli_fetch_array($ambildata)){
@@ -85,6 +88,7 @@
                         <td>$no</td>
                         <td>$tampil[nama_dokter]</td>
                         <td>$tampil[tanggal_periksa]</td>
+                        <td>$tampil[no_antrian]</td>
                     </tr>";
                     $no++;
                 }
