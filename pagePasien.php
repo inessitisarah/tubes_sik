@@ -64,7 +64,7 @@
 
         if ($num_rows == 0){ ?>
             <h3 class="w3-center">Anda Belum Melakukan Reservasi Pemeriksaan</h3>
-            <div>
+            <div class="w3-center">
             <a href="./tambahPemeriksaan.php" class="w3-btn w3-round w3-teal">Reservasi</a>
             </div>
             <?php
