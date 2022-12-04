@@ -29,38 +29,27 @@
 
  <!-- BODY -->
 
-<body>
-    
-    <h3>LOGIN</h3>
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-     <form  method="post" action="login.php">
-
-        <h2>LOGIN</h2>
-
+<body class="w3-container" style="padding:64px 16px">
+    <br></br>
+    <h2 class="w3-center"><b>LOGIN</b></h2>
+    <form method="post" class="w3-center" action="login.php">
         <?php if (isset($_GET['error'])) { ?>
 
             <p class="error"><?php echo $_GET['error']; ?></p>
 
         <?php } ?>
-
-        <label>Username</label>
-
-        <input type="text" name="username" placeholder="Username"><br>
-
-        <label>Password</label>
-
-        <input type="password" name="password" placeholder="Password"><br> 
-
+        <input type="text" class="w3-hover-shadow w3-input w3-center" name="username" placeholder="Username">
+        <input type="password" class="w3-hover-shadow w3-input w3-center" name="password" placeholder="Password"><br> 
+        </br>
         <div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
+  		<button type="submit" class="w3-btn w3-round w3-black" name="login_user">Login</button>
   	    </div>
 
      </form>
-     <p>
+     <p class="w3-center">
   		Belum mendaftarkan akun? Daftarkan di sini: <a href="register.php">Registrasi</a>
   	</p>
+    <br></br>
 
 </body>
 <?php include "templates/footer.php"; ?>

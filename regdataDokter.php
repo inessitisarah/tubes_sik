@@ -30,7 +30,6 @@ if(!isset($_SESSION['role'])){
 </head>
 
 <body>
-	<h3>Data Dokter</h3>
 
   <div class="w3-center">
   	<h3>Data Dokter</h3>

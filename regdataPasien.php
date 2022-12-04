@@ -29,8 +29,6 @@ if(!isset($_SESSION['role'])){
 </head>
 
 <body>
-	<h3>Data Pasien</h3>
-
   <div class="w3-center">
   	<h3>Data Pasien</h3>
   </div>

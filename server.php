@@ -53,6 +53,8 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$username', '$email', '$password', '$role')";
   	mysqli_query($configDB, $query);
   	$_SESSION['username'] = $username;
+    $_SESSION['role'] = $role;
+    $_SESSION['email'] = $email;
   	$_SESSION['success'] = "You are now logged in";
     //pembagian header sesuai dengan role masing-masing user
     if ($role=="pasien"){
