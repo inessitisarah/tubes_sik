@@ -3,7 +3,7 @@ include('server.php');
 session_start();
 if(!isset($_SESSION['role'])){
       header("location: index.php");
-    }else if ($_SESSION['role']!=('admin')){
+    }else if ((($_SESSION['role']!=('admin'))&&($_SESSION['role']!=('pasien')))){
       header('location: errorRedirect.php');
 
   }
@@ -45,9 +45,6 @@ if(!isset($_SESSION['role'])){
     <form method="post" action="regdataPasien.php" class="w3-center">
       <?php include('errors.php'); ?>
       <div class="input-group">
-        <input type="integer" class="w3-hover-shadow w3-input w3-center" name="id_pasien" placeholder="Id Pasien" value="<?php echo $id_pasien; ?>">
-      </div>
-      <div class="input-group">
         <input type="text" class="w3-hover-shadow w3-input w3-center" name="nama_pasien" placeholder="Nama Pasien" value="<?php echo $nama_pasien; ?>">
       </div>
       <div class="input-group">
@@ -74,7 +71,7 @@ if(!isset($_SESSION['role'])){
       </div>
       
       <div class="input-group">
-        <button type="submit"  class="w3-btn w3-black w3-round" name="data_pasien">Submit</button>
+        <button type="submit"  class="w3-btn w3-black w3-round" name="data_sendiri">Submit</button>
       </div>
       
     </form>

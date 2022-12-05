@@ -3,7 +3,7 @@ include('server.php');
 session_start();
 if(!isset($_SESSION['role'])){
       header("location: index.php");
-    }else if ($_SESSION['role']!='admin'){
+    }else if ($_SESSION['role']!=('admin')){
       header('location: errorRedirect.php');
 
   }
@@ -23,7 +23,8 @@ if(!isset($_SESSION['role'])){
 
     <!-- STYLE -->
     <?php 
-	include "templates/style.php"; 
+	  include "templates/style.php"; 
+    include "include/script.php";
 	?>
 
 </head>

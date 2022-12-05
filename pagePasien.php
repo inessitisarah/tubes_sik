@@ -1,12 +1,12 @@
 <?php 
     session_start(); 
     require "include/configDB.php";
-    //if(!isset($_SESSION['role'])){
-        //header("location: index.php");
-    //}else if ($_SESSION['role']!='pasien'){
-        //header('location: errorRedirect.php');
+    if(!isset($_SESSION['role'])){
+        header("location: index.php");
+    }else if ($_SESSION['role']!='pasien'){
+        header('location: errorRedirect.php');
 
-    //} 
+    } 
 ?>
 
 <html>
@@ -45,10 +45,15 @@
 
     <!-- Buat menampilkan nama -->
     <?php
-        $ambilnama = mysqli_query($configDB, "select * from pasien WHERE pasien.id = '$id' ") or die (mysqli_error($koneksiDB));
+        /* $ambilnama = mysqli_query($configDB, "select * from pasien WHERE pasien.id = '$id' ") or die (mysqli_error($configDB));
         $hasilquery = mysqli_fetch_array($ambilnama);
+        $nama=mysqli_fetch_assoc($hasilquery);
+        if(!isset($_SESSION['nama'])){
+            $_SESSION['nama']=$nama;
+        } */
+        $nama=$_SESSION['nama'];
     ?>
-    <h2 class="w3-center"><b>Selamat datang <?php echo $hasilquery['nama_pasien']; ?>!</b></h2>
+    <h2 class="w3-center"><b>Selamat datang <?php echo $nama; ?>!</b></h2>
     <br>
 
     <!--Mengambil data pemeriksaan -->

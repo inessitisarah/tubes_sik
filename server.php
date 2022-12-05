@@ -47,6 +47,7 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
+
   	$password = md5($password_1);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO user_credentials (username, email, password, role) 
@@ -59,10 +60,10 @@ if (isset($_POST['reg_user'])) {
     //pembagian header sesuai dengan role masing-masing user
     if ($role=="pasien"){
       //nyoba redirect ke localhost
-      header('location: pagePasien.php');
+      header('location: regPasienSendiri.php');
     }
     else if ($role=="dokter"){
-      header('location: pagedokter.php');
+      header('location: regDokterSendiri.php');
     }
     else if ($role=="apoteker"){
       header('location: indexApt.php');
@@ -114,9 +115,7 @@ if (isset($_POST['login_user'])) {
         $query="SELECT * FROM pasien JOIN user_credentials ON pasien.id = user_credentials.user_id WHERE pasien.id=$id";
         $ambildata=mysqli_query($configDB, $query);
         $user=mysqli_fetch_assoc($ambildata);
-        $_SESSION['nama']=$user['nama_pasien'];
-        $_SESSION['nama']=$user['nama'];
-        
+        $_SESSION['nama']=$user['nama_pasien'];        
         header('location: pagePasien.php');
       }
       //redirect sesuai role
@@ -161,7 +160,7 @@ if (isset($_POST['data_pasien'])) {
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($id_pasien)) { array_push($errors, "Id pasien harus diisi."); }
-  if (empty($nama_pasien)) { array_push($errors, "Email harus diisi."); }
+  if (empty($nama_pasien)) { array_push($errors, "Nama pasien harus diisi."); }
   if (empty($alamat)) { array_push($errors, "Alamat harus diisi."); }
   if (empty($tanggal_lahir)) { array_push($errors, "Tanggal Lahir harus diisi."); }
   if (empty($jenis_kelamin)) { array_push($errors, "Jenis Kelamin harus diisi."); }
@@ -265,4 +264,70 @@ if (isset($_POST['data_dokter'])) {
   }
 }
 
+// TAMBAH DATA PASIEN
+$id_pasien = null;
+$nama_pasien    = "";
+$alamat="";
+//$tanggal_lahir="";
+$jenis_kelamin="";
+$golongan_darah="";
+$errors = array();
+
+if (isset($_POST['data_sendiri'])) {
+  $username=$_SESSION['username'];
+  $getID_query = "SELECT * FROM user_credentials WHERE username='$username'";
+  $result=mysqli_query($configDB,$getID_query);
+  $user=mysqli_fetch_assoc($result);
+  $id=$user['user_id'];
+  // receive all input values from the form
+
+  $id_pasien = mysqli_real_escape_string($configDB, $_POST['$id']);
+  $nama_pasien = mysqli_real_escape_string($configDB, $_POST['nama_pasien']);
+  $alamat = mysqli_real_escape_string($configDB, $_POST['alamat']);
+  $tanggal_lahir = mysqli_real_escape_string($configDB, $_POST['tanggal_lahir']);
+  $jenis_kelamin = mysqli_real_escape_string($configDB, $_POST['jenis_kelamin']);
+  $golongan_darah= mysqli_real_escape_string($configDB, $_POST['golongan_darah']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($nama_pasien)) { array_push($errors, "Nama harus diisi."); }
+  if (empty($alamat)) { array_push($errors, "Alamat harus diisi."); }
+  if (empty($tanggal_lahir)) { array_push($errors, "Tanggal Lahir harus diisi."); }
+  if (empty($jenis_kelamin)) { array_push($errors, "Jenis Kelamin harus diisi."); }
+  if (empty($golongan_darah)) { array_push($errors, "Golongan Darah harus diisi."); }
+
+
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM pasien WHERE id='$id'";
+  $result = mysqli_query($configDB, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    //pengecekan apakah data user sudah diisi atau belum ini masih blmbener
+    if ($user['id'] === $id) {
+      array_push($errors, "Data pasien sudah diisi.");
+    }
+    if($user['role']!="pasien"){
+      array_push($errors, "Id yang Anda isi bukan id pasien.");
+    }
+  }
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	$password = md5($password_1);//encrypt the password before saving in the database
+
+  	$query = "INSERT INTO pasien (id, nama_pasien, alamat, tanggal_lahir,jenis_kelamin,golongan_darah) 
+  			  VALUES($id, '$nama_pasien', '$alamat', '$tanggal_lahir','$jenis_kelamin','$golongan_darah')";
+  	mysqli_query($configDB, $query);
+    //pembagian header sesuai dengan role masing-masing user
+    echo "Pemasukan data pasien berhasil!";
+    $_SESSION['id']=$id;
+    $_SESSION['nama']=$nama_pasien;
+    header('location: pagePasien.php');
+
+  	
+  }
+}
 ?>
