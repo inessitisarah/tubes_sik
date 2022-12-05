@@ -53,6 +53,9 @@
     <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithMenuDokter2.php"; ?>
 
+    <!-- Navbar (sit on top) -->
+    <?php include "templates/headerdokter.php"; ?>
+
     <div class="w3-container" style="padding:32px 16px">
     <h3 class="w3-center"><b>Mengupdate Data Pemeriksaan</b></h3>
 

@@ -19,21 +19,6 @@
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
-    <style>
-    body{
-    text-align:center;
-    }
-    body .form_wrapper{
-    display:inline-block;
-    background-color: #EFEBE9;
-    border-radius: 5px;
-    height: auto;
-    padding: 15px 18px;
-    margin: 5% auto;
-    margin-left: auto;
-    margin-right: auto;
-    } 
-    </style>
 </head>
 
 <body>
@@ -42,6 +27,12 @@
     <!-- Navbar (sit on top) -->
         <?php include "templates/navbarWithMenuTambahPemeriksaan.php"; ?>
     </div>
+
+    <!-- Header -->
+    <div>
+    <?php include "templates/headerPasien.php"; ?>
+    </div>
+
     <br><br><br><br>
 
     <h2 class="w3-center"><b>Berikut Jadwal Dokter Kami:</b></h2>

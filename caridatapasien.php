@@ -27,6 +27,11 @@
         <?php include "templates/navbarWithMenuDokter2.php"; ?>
     </div>
 
+    <!-- Header -->
+    <div>
+    <?php include "templates/headerDokter.php"; ?>
+    </div>
+
     <br><br><br>
     <h3 class="w3-center"><b>Pencarian Data Pemeriksaan</b></h3>
     <br> 
