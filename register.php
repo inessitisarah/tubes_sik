@@ -19,6 +19,19 @@
 	include "templates/headerlagi.php";
 
 	?>
+	<style>
+    body{
+    text-align:center;
+    }
+    body .form_wrapper{
+    display:inline-block;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 36px;
+    margin-left: auto;
+    margin-right: auto;
+    } 
+    </style>
    
 </head>
 
@@ -33,6 +46,8 @@
 
 	<form method="post" class="w3-center" action="register.php">
   	<?php include('errors.php'); ?>
+	
+	<div class="form_wrapper">
   	<div class="input-group">
   	  <input type="text" name="username" class="w3-hover-shadow w3-input" placeholder="Username" value="<?php echo $username; ?>">
   	</div>
@@ -45,6 +60,7 @@
   	<div class="input-group">
   	  <input type="password" class="w3-hover-shadow w3-input" placeholder="Confirm Password" name="password_2">
   	</div>
+	</div>
 	<br></br>
 	<select name="role" class="w3-dropdown-click:hover w3-btn w3-round">
       <option value="" disabled selected>Role</option>

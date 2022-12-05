@@ -24,6 +24,19 @@
     include "templates/navbarWithoutMenuLoginReg.php";
     include "templates/headerlagi.php"
     ?>
+    <style>
+    body{
+    text-align:center;
+    }
+    body .form_wrapper{
+    display:inline-block;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 18px;
+    margin-left: auto;
+    margin-right: auto;
+    } 
+    </style>
 </head>
 
 
@@ -39,9 +52,11 @@
             <p class="error"><?php echo $_GET['error']; ?></p>
 
         <?php } ?>
-        <input type="text" class="w3-hover-shadow w3-input w3-center" name="username" placeholder="Username">
-        <input type="password" class="w3-hover-shadow w3-input w3-center" name="password" placeholder="Password"><br> 
-        </br>
+        <div class="form_wrapper">
+        <input type="text" class="w3-hover-shadow w3-input w3-round w3-center" name="username" placeholder="Username">
+        <input type="password" class="w3-hover-shadow w3-input w3-round w3-center" name="password" placeholder="Password"><br> 
+        </div>
+    </br>
         <div class="input-group">
   		<button type="submit" class="w3-btn w3-round w3-black" name="login_user">Login</button>
   	    </div>
