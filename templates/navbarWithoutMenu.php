@@ -5,5 +5,8 @@
     <div class="w3-right">
       <a href="./login.php" class="w3-bar-item w3-button">Login</a>
     </div>
+    <div class="w3-right">
+      <a href="./register.php" class="w3-bar-item w3-button">Registrasi</a>
+    </div>
   </div>
 </div>
