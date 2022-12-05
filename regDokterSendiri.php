@@ -3,18 +3,19 @@ include('server.php');
 session_start();
 if(!isset($_SESSION['role'])){
       header("location: index.php");
-    }else if ((($_SESSION['role']!=('admin'))&&($_SESSION['role']!=('pasien')))){
+    }else if (($_SESSION['role']!=('admin')&&($_SESSION['role']!=('dokter')))){
       header('location: errorRedirect.php');
 
   }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Homepage : Puskesmas Ganesha</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -24,57 +25,45 @@ if(!isset($_SESSION['role'])){
     <?php 
 	  include "templates/style.php"; 
     include "include/script.php";
-	  ?>
+	?>
 
 </head>
 
 <body>
     <!-- Navbar (sit on top) -->
-  <?php include "templates/navbarWithMenuAdmin.php"; ?>
+    <?php include "templates/navbarWithMenuAdmin.php"; ?>
 
     <!-- Sidebar (hidden by default) -->
-  <?php include "templates/sidebarAdmin.php"; ?>
+    <?php include "templates/sidebarAdmin.php"; ?>
 
     <!-- Header with full-height image -->
-  <?php include "templates/headerHome.php"; ?>
+    <?php include "templates/headerHome.php"; ?>
 
+  <br></br>
   <div class="w3-center">
-  	<h3>Data Pasien</h3>
+  	<h2><b>Data Dokter</b></h2>
   </div>
   <div class="w3-center">
-    <form method="post" action="regdataPasien.php" class="w3-center">
-      <?php include('errors.php'); ?>
-      <div class="input-group">
-        <input type="text" class="w3-hover-shadow w3-input w3-center" name="nama_pasien" placeholder="Nama Pasien" value="<?php echo $nama_pasien; ?>">
-      </div>
-      <div class="input-group">
-        <input type="text" class="w3-hover-shadow w3-input w3-center" name="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>">
-      </div>
-      <div class="input-group">
-        <input type="date" class="w3-hover-shadow w3-input w3-center" name="tanggal_lahir" placeholder="Tanggal Lahir" value="<?php echo $tanggal_lahir; ?>">
-      </div>
-      <div>
-        <select class="w3-dropdown-click:hover w3-btn w3-round" name="jenis_kelamin">
-            <option value="" disabled selected>Jenis Kelamin</option>
-            <option value="Pria">Pria</option>
-            <option value="Wanita">Wanita</option>
-          </select>
-      </div>
-      <div>
-        <select class="w3-dropdown-click:hover w3-btn w3-round" name="golongan_darah">
-          <option value="" disabled selected>Golongan Darah</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="A">O</option>
-          <option value="B">AB</option>
-        </select>
-      </div>
-      
-      <div class="input-group">
-        <button type="submit"  class="w3-btn w3-black w3-round" name="data_sendiri">Submit</button>
-      </div>
-      
-    </form>
+  <form method="post" action="regDokterSendiri.php" class="w3-center">
+  	<?php include('errors.php'); ?>
+  	<div class="input-group">
+  	  <input type="text" class="w3-hover-shadow w3-input w3-center" name="nama_dokter" placeholder="Nama Dokter" value="<?php echo $nama_dokter; ?>">
+  	</div>
+      <select name="poli_dokter" class="w3-dropdown-click:hover w3-btn w3-round">
+      <option value="" disabled selected>Poli Dokter</option>
+      <option value="Umum">Umum</option>
+      <option value="Gigi dan Mulut">Gigi dan Mulut</option>
+      <option value="Kesehatan Ibu Anak">Kesehatan Ibu Anak</option>
+      <option value="Keluarga Berencana">Keluarga Berencana</option>
+    </select>
+    <div class="spesialisasi">
+  	  <input type="text" name="spesialisasi" class="w3-hover-shadow w3-input w3-center" placeholder="Spesialisasi" value="<?php echo $spesialisasi; ?>">
+  	</div> 
+    <br></br>
+  	<div class="input-group">
+  	  <button type="submit" class="w3-btn w3-black w3-round" name="dokter_sendiri">Submit</button>
+  	</div>    
+  </form>
   </div>
 </body>
 <?php include "templates/footer.php"; ?>

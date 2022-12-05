@@ -330,4 +330,76 @@ if (isset($_POST['data_sendiri'])) {
   	
   }
 }
+
+//Tambah data dokter sendiri
+$id = null;
+$nama_dokter    = "";
+$poli_dokter="";
+$spesialisasi="";
+$errors = array();
+
+if (isset($_POST['dokter_sendiri'])) {
+  $username=$_SESSION['username'];
+  $getID_query = "SELECT * FROM user_credentials WHERE username='$username'";
+  $result=mysqli_query($configDB,$getID_query);
+  $user=mysqli_fetch_assoc($result);
+  $id=$user['user_id'];
+  // receive all input values from the form
+  $id_dokter  = mysqli_real_escape_string($configDB, $_POST['id']);
+  $nama_dokter = mysqli_real_escape_string($configDB, $_POST['nama_dokter']);
+  $poli_dokter = mysqli_real_escape_string($configDB, $_POST['poli_dokter']);
+  $spesialisasi = mysqli_real_escape_string($configDB, $_POST['spesialisasi']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($nama_dokter)) { array_push($errors, "Nama harus diisi."); }
+  if (empty($poli_dokter)) { array_push($errors, "Poli harus diisi."); }
+  if (empty($spesialisasi)) { array_push($errors, "Spesialisasi harus diisi."); }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM dokter WHERE id='$id'";
+  $result = mysqli_query($configDB, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    //pengecekan apakah data user sudah diisi atau belum ini masih blmbener
+    if ($user['id'] === $id) {
+      array_push($errors, "Data dokter sudah diisi.");
+    }
+  }
+
+    // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM user_credentials WHERE user_id='$id'";
+  $result = mysqli_query($configDB, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) { // if user exists
+    //pengecekan apakah data user sudah diisi atau belum ini masih blmbener
+    if ($user['role'] != "dokter") {
+      array_push($errors, "Id yang Anda isi bukan id dokter.");
+    }
+  }
+
+  
+  
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	$password = md5($password);//encrypt the password before saving in the database
+
+  	$query = "INSERT INTO dokter (id, nama_dokter, poli, spesialisasi) 
+  			  VALUES($id, '$nama_dokter', '$poli_dokter', '$spesialisasi')";
+  	mysqli_query($configDB, $query);
+    //pembagian header sesuai dengan role masing-masing user
+    echo "Pemasukan data pasien berhasil!";
+    $_SESSION['role']='dokter';
+    $_SESSION['nama']=$nama_dokter;
+    $_SESSION['id']=$id;
+    header('location: pagedokter.php');
+
+  	
+  }
+}
 ?>
