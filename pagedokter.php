@@ -1,10 +1,10 @@
 <!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
 <?php session_start();
-    if(!isset($_SESSION['role'])){
-        header("location: index.php");
-      }else if ($_SESSION['role']!='dokter'){
-        header('location: errorRedirect.php');
-    }
+    //if(!isset($_SESSION['role'])){
+        //header("location: index.php");
+      //}else if ($_SESSION['role']!='dokter'){
+        //header('location: errorRedirect.php');
+    //}
     $id =  $_SESSION['id'];
     $username = $_SESSION['username'];
 
@@ -34,8 +34,14 @@
     <?php include "templates/navbarWithMenuDokter.php"; ?>
     </div>
 
+    <div>
     <!-- Sidebar (hidden by default) -->
     <?php include "templates/sidebarDokter.php"; ?>
+    </div>
+
+    <!-- Header -->
+    <div>
+    <?php include "templates/headerDokter.php"; ?>
     </div>
     
 
@@ -45,7 +51,7 @@
         $hasilquery = mysqli_fetch_array($ambilnama);
     ?>
 
-    <br><br><br>
+    <br><br>
     <div>
     <h2 class="w3-center"><b>Selamat datang Dokter <?php echo $hasilquery['nama_dokter']; ?>!</b></h2>
     <br><br>
@@ -75,7 +81,7 @@
         else{
             ?>
             <h3 class="w3-center">Berikut Data Reservasi Pemeriksaan Anda Hari Ini:</h3>
-            <br><br>
+            <br>
             <table class="w3-table w3-striped w3-border" style="width:80%" align="center">
                 <tr>
                     <th>No</th>

@@ -39,8 +39,13 @@
         <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithMenuPasien.php"; ?>
     </div>
+
+    <!-- Header -->
+    <div>
+    <?php include "templates/headerPasien.php"; ?>
+    </div>
     
-    <br><br><br><br>
+    <br><br>
     <div>
 
     <!-- Buat menampilkan nama -->
@@ -57,7 +62,7 @@
         $tanggal_sekarang = date("Y-m-d");
         //echo $tanggal_sekarang;
         $ambildata = mysqli_query($configDB, "SELECT * from pasien, periksa, dokter
-        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id AND diagnosis = ''
+        WHERE periksa.id_pasien = '$id' AND pasien.id = '$id' AND periksa.id_dokter = dokter.id AND periksa.diagnosis = ''
         ORDER BY periksa.tanggal_periksa ASC") or die (mysqli_error($koneksiDB));
 
         $num_rows = mysqli_num_rows($ambildata); 
