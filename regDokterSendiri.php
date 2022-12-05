@@ -31,10 +31,7 @@ if(!isset($_SESSION['role'])){
 
 <body>
     <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithMenuAdmin.php"; ?>
-
-    <!-- Sidebar (hidden by default) -->
-    <?php include "templates/sidebarAdmin.php"; ?>
+    <?php include "templates/navbarWithoutMenu.php"; ?>
 
     <!-- Header with full-height image -->
     <?php include "templates/headerHome.php"; ?>
