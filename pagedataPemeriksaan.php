@@ -83,6 +83,7 @@
                         <td>$tampil[nama_dokter]</td>
                         <td>$tampil[tanggal_periksa]</td>
                         <td>$tampil[no_antrian]</td>
+
                     </tr>";
                 }
                 ?>
