@@ -9,13 +9,11 @@ function function_alert($nama, $stok) {
         window.location.href= '../stokObat.php#stok'
         </script>";
 }
-
+$nama = $_POST["namaObat"];
+$stok = $_POST["stokObat"];
 
 $sql = mysqli_query($configDB, "UPDATE obat SET stock_obat='".$_POST["stokObat"]."' WHERE nama_obat='".$_POST["namaObat"]."'");
 
-
-$nama = $_POST["namaObat"];
-$stok = $_POST["stokObat"];
  
 function_alert($nama, $stok);
  ?>
