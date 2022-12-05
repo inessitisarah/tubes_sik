@@ -82,10 +82,10 @@
   	        <input type="date" name="tanggal_periksa" >
   	        </div>
 
-            <div class="w3-center">
+            <div>
             <tr>
                 <td></td>
-                <td><input class="w3-btn w3-round w3-teal w3-center"type="submit" value="Register" name="proses"></td>
+                <td><input class="w3-center w3-btn w3-round w3-teal"type="submit" value="Register" name="proses"></td>
             </tr>
             </div>
 
