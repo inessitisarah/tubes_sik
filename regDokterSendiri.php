@@ -3,7 +3,7 @@ include('server.php');
 session_start();
 if(!isset($_SESSION['role'])){
       header("location: index.php");
-    }else if ($_SESSION['role']!=('admin')){
+    }else if (($_SESSION['role']!=('admin')&&($_SESSION['role']!=('dokter')))){
       header('location: errorRedirect.php');
 
   }
@@ -31,10 +31,7 @@ if(!isset($_SESSION['role'])){
 
 <body>
     <!-- Navbar (sit on top) -->
-    <?php include "templates/navbarWithMenuAdmin.php"; ?>
-
-    <!-- Sidebar (hidden by default) -->
-    <?php include "templates/sidebarAdmin.php"; ?>
+    <?php include "templates/navbarWithoutMenu.php"; ?>
 
     <!-- Header with full-height image -->
     <?php include "templates/headerHome.php"; ?>
@@ -44,11 +41,8 @@ if(!isset($_SESSION['role'])){
   	<h2><b>Data Dokter</b></h2>
   </div>
   <div class="w3-center">
-  <form method="post" action="regdataDokter.php" class="w3-center">
+  <form method="post" action="regDokterSendiri.php" class="w3-center">
   	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  	  <input type="integer" class="w3-hover-shadow w3-input w3-center" name="id_dokter" placeholder="Id Dokter" value="<?php echo $id_dokter; ?>">
-  	</div>
   	<div class="input-group">
   	  <input type="text" class="w3-hover-shadow w3-input w3-center" name="nama_dokter" placeholder="Nama Dokter" value="<?php echo $nama_dokter; ?>">
   	</div>
@@ -64,7 +58,7 @@ if(!isset($_SESSION['role'])){
   	</div> 
     <br></br>
   	<div class="input-group">
-  	  <button type="submit" class="w3-btn w3-black w3-round" name="data_dokter">Submit</button>
+  	  <button type="submit" class="w3-btn w3-black w3-round" name="dokter_sendiri">Submit</button>
   	</div>    
   </form>
   </div>

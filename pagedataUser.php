@@ -92,7 +92,7 @@
 
         <!--Mengambil data pasien -->
     <?php       
-        $ambildata = mysqli_query($configDB, "select * from pasien");
+        $ambildata = mysqli_query($configDB, "select * from pasien,user_credentials WHERE user_credentials.user_id=pasien.id");
 
         $num_rows = mysqli_num_rows($ambildata); 
 
@@ -107,6 +107,8 @@
             <table class="w3-center w3-table w3-striped w3-border" align="center">
                 <tr>
                     <th>Id Pasien</th>
+                    <th>Username</th>
+                    <th>Email</th>
                     <th>Nama Pasien</th>
                     <th>Alamat</th>
                     <th>Tanggal Lahir</th>
@@ -119,7 +121,9 @@
                     echo 
                     "<tr>
                         <td>$tampil[id]</td>
-                        <td>$tampil[nama_pasien]</td>
+                        <td>$tampil[username]</td>
+                        <td>$tampil[email]</td>
+                        <td>$tampil[nama_pasien]</td>   
                         <td>$tampil[alamat]</td>
                         <td>$tampil[tanggal_lahir]</td>
                         <td>$tampil[jenis_kelamin]</td>
@@ -134,7 +138,7 @@
     ?>
             <!--Mengambil data pasien -->
     <?php       
-        $ambildata = mysqli_query($configDB, "select * from dokter");
+        $ambildata = mysqli_query($configDB, "select * from dokter,user_credentials WHERE user_credentials.user_id=dokter.id");
 
         $num_rows = mysqli_num_rows($ambildata); 
 
@@ -149,6 +153,8 @@
             <table class="w3-center w3-table w3-striped w3-border" align="center">
                 <tr>
                     <th>Id Dokter</th>
+                    <th>Username</th>
+                    <th>Email</th>
                     <th>Nama Dokter</th>
                     <th>Poli</th>
                     <th>Spesialisasi</th>
@@ -158,6 +164,8 @@
                     echo 
                     "<tr>
                         <td>$tampil[id]</td>
+                        <td>$tampil[username]</td>
+                        <td>$tampil[email]</td>
                         <td>$tampil[nama_dokter]</td>
                         <td>$tampil[poli]</td>
                         <td>$tampil[spesialisasi]</td>
