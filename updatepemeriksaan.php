@@ -1,8 +1,8 @@
 <h2>Update Data Pemeriksaan</h2>
 
 <?php
-    include "C:/xampp/htdocs/tubes_sik/koneksiDB.php";
-    $sql=mysqli_query($koneksiDB,"Select * from periksa,dokter, pasien  
+    include "include/configDB.php";
+    $sql=mysqli_query($configDB,"Select * from periksa,dokter, pasien  
     where periksa.id_periksa ='$_GET[update]' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter");
     $data=mysqli_fetch_array($sql);
 ?>
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+    <?php include "templates/style.php"; ?>
     <style> 
     input[type=text] {
         width: 100%;
@@ -43,7 +43,7 @@
 <!-- BODY -->
 <body>
     <!-- Navbar (sit on top) -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter2.php"; ?>
+    <?php include "templates/navbarWithMenuDokter2.php"; ?>
 
     <br><br>
     <h3 class="w3-center"><b>Mengupdate Data Pemeriksaan</b></h3>
@@ -90,10 +90,10 @@
     </div>
 
     <!-- Footer -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
+    <?php include "templates/footer.php"; ?>
 
     <!-- Script -->
-    <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
+    <?php include "include/script.php"; ?>
 
 </body>
 </html>
@@ -102,7 +102,7 @@
 
 if(isset($_POST['proses'])){
 
-    mysqli_query($koneksiDB,"update periksa set
+    mysqli_query($configDB,"update periksa set
     diagnosis = '$_POST[diagnosis]',
     preskripsi_obat = '$_POST[preskripsi_obat]'
     where id_periksa = $_GET[update]") or die(mysqli_error($koneksi));

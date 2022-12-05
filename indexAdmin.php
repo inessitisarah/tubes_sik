@@ -73,9 +73,8 @@
             </div>
             </div>
     </div>
-
     <!-- 'Layanan' Section -->
-<div class="w3-container w3-light-grey" style="padding:64px 16px" id="layanan">
+    <div class="w3-container w3-light-grey" style="padding:64px 16px" id="layanan">
   <h3 class="w3-center"><b>Jadwal Layanan</b></h3>
   <p class="w3-center w3-large">Berikut ini adalah fasilitas yang dimiliki Puskesmas Ganesha dalam rangka menyediakan layanan kesehatan bagi masyarakat</p>
   <div class="w3-row-padding w3-grayscale" style="margin-top:32px">
@@ -131,14 +130,16 @@
           <tr class="w3-light-grey">
             <th>Poliklinik</th>
             <th>Nama Dokter</th>
-            <th>Jadwal Praktek</th>
             <th>Spesialisasi</th>
+            <th>Hari</th>
+            <th>Jam Mulai</th>
+            <th>Jam Selesai</th>
           </tr>
         </thead>
 
         <!-- PHP CODE TO FETCH DATA FROM ROWS -->
         <?php
-                $sql = mysqli_query($configDB,"SELECT * FROM dokter order by poli ASC");
+                $sql = mysqli_query($configDB,"SELECT poli,nama_dokter,spesialisasi,hari,waktu_mulai,waktu_selesai FROM dokter,jadwal_dokter WHERE dokter.id = jadwal_dokter.id order by poli ASC");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
@@ -151,6 +152,8 @@
                 <td><?php echo $row[1];?></td>
                 <td><?php echo $row[2];?></td>
                 <td><?php echo $row[3];?></td>
+                <td><?php echo $row[4];?></td>
+                <td><?php echo $row[5];?></td>
         </tr>
         <?php
                 }
@@ -160,7 +163,7 @@
   </div>
 </div>  
 
-    <!-- Footer -->
+    <!--  Footer -->
     <?php include "templates/footer.php"; ?>
 
     <!-- Script -->
