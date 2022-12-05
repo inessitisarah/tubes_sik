@@ -1,5 +1,7 @@
-<?php include('server.php') ?>
+<?php include('server.php'); ?>
+
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,48 +13,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php 
+	<?php 
 	include "templates/style.php"; 
 	include "templates/navbarWithoutMenuLoginReg.php";
-	?>
+	include "templates/headerlagi.php";
 
+	?>
+   
 </head>
 
 <body>
-	<h3>Registrasi</h3>
+	<br></br>
+	<br></br>
 
-  <div class="w3-center">
-  	<h3>Registrasi</h3>
-  </div>
-  <div class="w3-center">
-  <form method="post" action="register.php">
+
+	<div class="w3-center">
+  	<h3><b>Registrasi</b></h3>
+	</div>
+
+	<form method="post" class="w3-center" action="register.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
-  	  <label>Username</label>
-  	  <input type="text" name="username" value="<?php echo $username; ?>">
+  	  <input type="text" name="username" class="w3-hover-shadow w3-input" placeholder="Username" value="<?php echo $username; ?>">
   	</div>
   	<div class="input-group">
-  	  <label>Email</label>
-  	  <input type="email" name="email" value="<?php echo $email; ?>">
+  	  <input type="email" name="email" class="w3-hover-shadow w3-input" placeholder="Email" value="<?php echo $email; ?>">
   	</div>
   	<div class="input-group">
-  	  <label>Password</label>
-  	  <input type="password" name="password_1">
+  	  <input type="password" class="w3-hover-shadow w3-input" placeholder="Password" name="password_1">
   	</div>
   	<div class="input-group">
-  	  <label>Confirm password</label>
-  	  <input type="password" name="password_2">
+  	  <input type="password" class="w3-hover-shadow w3-input" placeholder="Confirm Password" name="password_2">
   	</div>
-	<select name="role">
+	<br></br>
+	<select name="role" class="w3-dropdown-click:hover w3-btn w3-round">
       <option value="" disabled selected>Role</option>
       <option value="admin">Admin</option>
       <option value="dokter">Dokter</option>
       <option value="pasien">Pasien</option>
       <option value="apoteker">Apoteker</option>
     </select>
+	<br></br>
   	<div class="input-group">
-  	  <button type="submit" class="btn" name="reg_user">Register</button>
-  	</div>
+  	  <button type="submit" class="w3-btn w3-black w3-round" name="reg_user">Register</button>
+  
     
   	<p>
   		Sudah registrasi? <a href="login.php">Login</a>

@@ -1,13 +1,10 @@
 <?php
-// Initialize the session.
-// If you are using session_name("something"), don't forget it now!
 session_start();
 
-// Unset all of the session variables.
+// Unset semua variabel session
 $_SESSION = null;
 unset($_SESSION['role']);
-// Note: This will destroy the session, and not just the session data!
-
+// Destroy cookies
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -16,7 +13,7 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Finally, destroy the session.
+// Destroy session.
 session_destroy();
 header('location:index.php')
 ?>

@@ -1,15 +1,10 @@
 <!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
 <?php session_start();
-    //if($_SESSION['role']!='dokter'){
+    //if(!isset($_SESSION['role'])){
+        //header("location: index.php");
+      //}else if ($_SESSION['role']!='dokter'){
         //header('location: errorRedirect.php');
     //}
-    if(!isset($_SESSION['role'])){
-        header("location: index.php");
-    }else if ($_SESSION['role']!='dokter'){
-        header('location: errorRedirect.php');
-
-    } 
-
     $id =  $_SESSION['id'];
     $username = $_SESSION['username'];
 
@@ -39,8 +34,14 @@
     <?php include "templates/navbarWithMenuDokter.php"; ?>
     </div>
 
+    <div>
     <!-- Sidebar (hidden by default) -->
     <?php include "templates/sidebarDokter.php"; ?>
+    </div>
+
+    <!-- Header -->
+    <div>
+    <?php include "templates/headerDokter.php"; ?>
     </div>
     
 
@@ -50,7 +51,7 @@
         $hasilquery = mysqli_fetch_array($ambilnama);
     ?>
 
-    <br><br><br>
+    <br><br>
     <div>
     <h2 class="w3-center"><b>Selamat datang Dokter <?php echo $hasilquery['nama_dokter']; ?>!</b></h2>
     <br><br>
@@ -80,15 +81,15 @@
         else{
             ?>
             <h3 class="w3-center">Berikut Data Reservasi Pemeriksaan Anda Hari Ini:</h3>
-            <br><br>
-            <table class="w3-table w3-striped w3-border" align="center">
+            <br>
+            <table class="w3-table w3-striped w3-border" style="width:80%" align="center">
                 <tr>
                     <th>No</th>
                     <th>Tanggal Periksa</th>
+                    <th>ID Pasien</th>
                     <th>Nama Pasien</th>
                     <th>Diagnosis</th>
                     <th>Preskripsi Obat</th>
-                    <th>ID Periksa</th>
                     <th>Action</th>
                 </tr>
                 <?php
@@ -97,10 +98,10 @@
                     <tr>
                         <td>$no</td>
                         <td>$tampil[tanggal_periksa]</td>
+                        <td>$tampil[id_pasien]</td>
                         <td>$tampil[nama_pasien]</td>
                         <td>$tampil[diagnosis]</td>
                         <td>$tampil[preskripsi_obat]</td>
-                        <td>$tampil[id_periksa]</td>
                         <td> <a href = 'updatepemeriksaan.php?update=$tampil[id_periksa]'>
                             <input type = 'button' value = 'Edit'>
                             </a>

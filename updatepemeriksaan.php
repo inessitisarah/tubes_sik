@@ -43,15 +43,16 @@
 <!-- BODY -->
 <body>
     <!-- Navbar (sit on top) -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuApoteker.php"; ?>
+    <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter2.php"; ?>
 
     <br><br>
     <h3 class="w3-center"><b>Mengupdate Data Pemeriksaan</b></h3>
 
     <!-- Updating Section -->
 
-    <div class="w3-row-padding" style="margin-top:32px">    
-    <form class="w3-center-container w3-card-4" action="" method="post">
+    <div class="w3-center w3-row-padding" style="margin-top:32px">    
+    <form  class="w3-center" action="" method="post" align ="center">
+        <div class="w3-center">
         <table>
             <tr>
                 <td width="150"><b>Nama</b></td>
@@ -84,7 +85,9 @@
                 <td><input class="w3-btn w3-round w3-teal"type="submit" value="Simpan" name="proses"></td>
             </tr>
         </table>
+        </div>
     </form>
+    </div>
 
     <!-- Footer -->
     <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>

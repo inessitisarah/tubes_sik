@@ -1,6 +1,6 @@
 <?php 
     session_start(); 
-    include "C:/xampp/htdocs/tubes_sik/include/configDB.php";
+    include "include/configDB.php";
     $id =  $_SESSION['id'];
     $no = 1;
 ?>
@@ -18,13 +18,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/style.php"; ?>
+    <?php include "templates/style.php"; ?>
 </head>
 
 <body>
     <div>
         <!-- Navbar (sit on top) -->
-        <?php include "C:/xampp/htdocs/tubes_sik/templates/navbarWithMenuDokter.php"; ?>
+        <?php include "templates/navbarWithMenuDokter2.php"; ?>
     </div>
 
     <br><br><br>
@@ -47,12 +47,17 @@
         $num_rows = mysqli_num_rows($query);
 
         if ($num_rows == 0) {
-            echo "Pasien belum pernah melakukan pemeriksaan";
+            ?> 
+            <br>
+            <h5 class="w3-center">Pasien belum pernah melakukan pemeriksaan</h5>
+            <?php
         } 
 
         else {
             ?>
-                <table class="w3-table w3-striped w3-border">
+                <br>
+                <div class="w3-center">
+                <table class="w3-center w3-table w3-striped w3-border" style="width: 50%" align = "center">
                 <tr>
                     <th>No</th>
                     <th>Tanggal Periksa</th>
@@ -74,6 +79,8 @@
     }
 
     ?>
+    </table>
+    </div>
 
 
 
@@ -81,10 +88,10 @@
 
     <div>
     <!-- Footer -->
-    <?php include "C:/xampp/htdocs/tubes_sik/templates/footer.php"; ?>
+    <?php include "templates/footer.php"; ?>
 
     <!-- Script -->
-    <?php include "C:/xampp/htdocs/tubes_sik/include/script.php"; ?>
+    <?php include "include/script.php"; ?>
     </div>
 
 
