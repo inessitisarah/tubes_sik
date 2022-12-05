@@ -72,6 +72,10 @@ include "include/configDB.php";
                 <input class="w3-input w3-border" name="namaObat" type="text"></p>
                 <label class="w3-text-indigo"><b>Stok</b></label>
                 <input class="w3-input w3-border" name="stokObat" type="text"></p>
+                <label class="w3-text-indigo"><b>Cara Penggunaan</b></label>
+                <input class="w3-input w3-border" name="caraPenggunaan" type="text"></p>
+                <label class="w3-text-indigo"><b>Harga</b></label>
+                <input class="w3-input w3-border" name="hargaObat" type="text"></p>
                 <div class="w3-left">
                     <p>      
                     <input class="w3-btn w3-round w3-indigo" name="insert" value="Insert" type="submit">
@@ -86,7 +90,11 @@ include "include/configDB.php";
                 <label class="w3-text-deep-orange"><b>Nama</b></label>
                 <input class="w3-input w3-border" name="namaObat" type="text"></p>
                 <label class="w3-text-deep-orange"><b>Stok</b></label>
-                <input class="w3-input w3-border" name="stokObat" type="text"></p>
+                <input class="w3-input w3-border" name="stokObat" type="text"></p>                
+                <label class="w3-text-deep-orange"><b>Cara Penggunaan</b></label>
+                <input class="w3-input w3-border-deep-orange" name="caraPenggunaan" type="text"></p>
+                <label class="w3-text-deep-orange"><b>Harga</b></label>
+                <input class="w3-input w3-border-deep-orange" name="hargaObat" type="text"></p>
                 <div class="w3-left">
                     <p>      
                     <input class="w3-btn w3-round w3-deep-orange" name="update" value="Update" type="submit">
