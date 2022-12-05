@@ -30,7 +30,7 @@
 
  <!-- BODY -->
 
-<body class="w3-container" style="padding:64px 16px">
+<body class="w3-container">
     <br></br>
     <h2 class="w3-center"><b>LOGIN</b></h2>
     <form method="post" class="w3-center" action="login.php">
