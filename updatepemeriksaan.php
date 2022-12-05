@@ -23,14 +23,22 @@
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
-    <style> 
-    input[type=text] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
+    <style>
+    body{
+    text-align:center;
     }
+    body .form_wrapper{
+    display:inline-block;
+    background-color: #EFEBE9;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 18px;
+    margin: 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    } 
     </style>
+    
 </head>
 
 <!-- INISIALISASI VARIABEL -->
@@ -45,13 +53,13 @@
     <!-- Navbar (sit on top) -->
     <?php include "templates/navbarWithMenuDokter2.php"; ?>
 
-    <br><br>
+    <div class="w3-container" style="padding:32px 16px">
     <h3 class="w3-center"><b>Mengupdate Data Pemeriksaan</b></h3>
 
     <!-- Updating Section -->
 
-    <div class="w3-center w3-row-padding" style="margin-top:32px">    
-    <form  class="w3-center" action="" method="post" align ="center">
+    <div class = "form_wrapper">   
+    <form  class="w3-container w3-center" action="" method="post" align ="center">
         <div class="w3-center">
         <table>
             <tr>
@@ -72,12 +80,12 @@
 
             <tr>
                 <td><b>Diagnosis</b></td>
-                <td><input class="w3-input w3-border" type="text" name="diagnosis" size="30" value="<?php echo $data['diagnosis']; ?>"></td>
+                <td><input class="w3-input w3-border-0 w3-round" type="text" name="diagnosis" size="30" value="<?php echo $data['diagnosis']; ?>"></td>
             </tr>
             
             <tr>
                 <td><b>Preskripsi Obat</b></td>
-                <td><input class="w3-input w3-border" type="text" name="preskripsi_obat" size="30" value="<?php echo $data['preskripsi_obat']; ?>"></td>
+                <td><input class="w3-input w3-border-0 w3-round" type="text" name="preskripsi_obat" size="30" value="<?php echo $data['preskripsi_obat']; ?>"></td>
             </tr>
         
             <tr>
@@ -87,6 +95,8 @@
         </table>
         </div>
     </form>
+    </div>
+    
     </div>
 
     <!-- Footer -->

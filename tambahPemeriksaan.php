@@ -19,6 +19,21 @@
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
+    <style>
+    body{
+    text-align:center;
+    }
+    body .form_wrapper{
+    display:inline-block;
+    background-color: #EFEBE9;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 18px;
+    margin: 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    } 
+    </style>
 </head>
 
 <body>
@@ -61,7 +76,7 @@
 
     <div class="w3-center">
     <form action="" method="post">        
-        <table class="w3-center">
+        <table class="w3-table w3-centered"">
             <tr>
                 <label>Dokter </label>
                 <select name="nama" id="nama">
@@ -84,7 +99,6 @@
 
             <div>
             <tr>
-                <td></td>
                 <td><input class="w3-center w3-btn w3-round w3-teal"type="submit" value="Register" name="proses"></td>
             </tr>
             </div>
