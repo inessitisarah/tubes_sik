@@ -1,11 +1,11 @@
-<h2>Update Data Pemeriksaan</h2>
+<h2>Update Data Pembayaran</h2>
 
 <?php
     include "include/configDB.php";
     session_start();
     if(!isset($_SESSION['role'])){
         header("location: index.php");
-      }else if ($_SESSION['role']!='dokter'){
+      }else if ($_SESSION['role']!='admin'){
         header('location: errorRedirect.php');
     }
     $sql=mysqli_query($configDB,"Select * from periksa,dokter, pasien  
