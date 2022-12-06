@@ -2,7 +2,9 @@
 <?php 
 include "include/configDB.php";
 session_start();
-if($_SESSION['role']!='apoteker'){
+if(!isset($_SESSION['role'])){
+    header("location: index.php");
+  }else if ($_SESSION['role']!='apoteker'){
     header('location: errorRedirect.php');
 }
 ?>

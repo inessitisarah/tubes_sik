@@ -2,6 +2,12 @@
 
 <?php
     include "include/configDB.php";
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("location: index.php");
+      }else if ($_SESSION['role']!='dokter'){
+        header('location: errorRedirect.php');
+    }
     $sql=mysqli_query($configDB,"Select * from periksa,dokter, pasien  
     where periksa.id_periksa ='$_GET[update]' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter");
     $data=mysqli_fetch_array($sql);
@@ -82,14 +88,14 @@
                 <td width="150"><b>Golongan Darah</b></td>
                 <td><?php echo $data['golongan_darah']; ?></td>
             </tr>
-  <!--           <tr>
+            <tr>
                 <td><b>Pembayaran</b></td>
                 <td><input class="w3-input w3-border" type="text" name="pembayaran" size="30" value="<?php echo $data['pembayaran']; ?>"></td>
-            </tr> -->
+            </tr> 
         
             <tr>
                 <td></td>
-                <td><input class="w3-btn w3-round w3-teal" type="submit" value="Simpan" name="pembayaran"></td>
+                <td><input class="w3-btn w3-round w3-teal" type="submit" value="Simpan" name="coba"></td>
             </tr>
         </table>
         </div>
@@ -109,7 +115,7 @@
 
 <?php
 
-if(isset($_POST['pembayaran'])){
+if(isset($_POST['coba'])){
 
     mysqli_query($configDB,"update periksa set
     pembayaran = '$_POST[pembayaran]'

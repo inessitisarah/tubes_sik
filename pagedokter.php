@@ -1,10 +1,11 @@
 <!-- Ini sudah disesuaikan nama tabel dan kolomnya -->
-<?php session_start();
-    //if(!isset($_SESSION['role'])){
-        //header("location: index.php");
-      //}else if ($_SESSION['role']!='dokter'){
-        //header('location: errorRedirect.php');
-    //}
+<?php 
+    session_start();
+    if(!isset($_SESSION['role'])){
+        header("location: index.php");
+      }else if ($_SESSION['role']!='dokter'){
+        header('location: errorRedirect.php');
+    }
     $id =  $_SESSION['id'];
     $username = $_SESSION['username'];
 
@@ -69,7 +70,7 @@
 
 
         $ambildata = mysqli_query($configDB, "select * from pasien, periksa, dokter
-        WHERE periksa.tanggal_periksa = '$tanggal_sekarang' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter AND periksa.id_dokter = '$id'") or die (mysqli_error($koneksiDB));
+        WHERE periksa.tanggal_periksa = '$tanggal_sekarang' AND periksa.id_pasien = pasien.id AND dokter.id = periksa.id_dokter AND periksa.id_dokter = '$id'") or die (mysqli_error($configDB));
 
         $num_rows = mysqli_num_rows($ambildata);
 

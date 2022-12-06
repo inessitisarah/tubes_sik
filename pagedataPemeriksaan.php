@@ -74,6 +74,8 @@
                     <th>Nama Dokter</th>
                     <th>Tanggal Periksa</th>
                     <th>Nomor Antrian</th>
+                    <th>Pembayaran</th>
+
                 </tr>
                 <?php
                 while ($tampil = mysqli_fetch_array($ambildata)){
@@ -83,7 +85,11 @@
                         <td>$tampil[nama_dokter]</td>
                         <td>$tampil[tanggal_periksa]</td>
                         <td>$tampil[no_antrian]</td>
-
+                        <td>$tampil[pembayaran]</td>
+                        <td> <a href = 'updatePembayaran.php?update=$tampil[id_periksa]'>
+                            <input type = 'button' value = 'Edit'>
+                            </a>
+                        </td>
                     </tr>";
                 }
                 ?>

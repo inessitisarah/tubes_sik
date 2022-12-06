@@ -22,14 +22,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- STYLE -->
+    <!-- STYLE -->
     <?php include "templates/style.php"; ?>
-    <style> 
-    input[type=text] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
+    <style>
+    body{
+    text-align:center;
     }
+    body .form_wrapper{
+    display:inline-block;
+    background-color: #EFEBE9;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 18px;
+    margin: 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    } 
     </style>
 </head>
 
@@ -49,8 +57,7 @@
     <h3 class="w3-center"><b>Mengupdate Data Pemeriksaan</b></h3>
 
     <!-- Updating Section -->
-
-    <div class="w3-center w3-row-padding" style="margin-top:32px">    
+    <div class="form_wrapper" style="margin-top:32px">    
     <form  class="w3-center" action="" method="post" align ="center">
         <div class="w3-center">
         <table>
