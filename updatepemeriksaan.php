@@ -68,8 +68,8 @@
 
             <tr>
                 <td width="150"><b>Usia</b></td>
-                <td><?php echo $usia->format('%y');
-                echo " tahun"; ?></td>
+                <td><?php echo $usia->format('%y tahun %m bulan %d hari');
+                ?></td>
             </tr>
             
             <tr>
