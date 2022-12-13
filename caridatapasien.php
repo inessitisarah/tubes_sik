@@ -1,11 +1,11 @@
 <?php 
     session_start(); 
     include "include/configDB.php";
-    //if(!isset($_SESSION['role'])){
-        //header("location: index.php");
-      //}else if ($_SESSION['role']!='dokter'){
-        //header('location: errorRedirect.php');
-    //}
+    if(!isset($_SESSION['role'])){
+        header("location: index.php");
+      }else if ($_SESSION['role']!='dokter'){
+        header('location: errorRedirect.php');
+    }
     $id =  $_SESSION['id'];
     $no = 1;
 ?>
