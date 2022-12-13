@@ -51,7 +51,7 @@
 
     <!-- Buat menampilkan nama -->
 
-    <h2 class="w3-center"><b>User Data</b></h2>
+    <h2 class="w3-center"><b>Data Pemeriksaan Hari Ini</b></h2>
     <br><br>
 
     <!--Mengambil data user credentials -->

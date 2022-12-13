@@ -65,7 +65,7 @@
     <?php include "templates/headerdokter.php"; ?>
 
     <div class="w3-container" style="padding:32px 16px">
-    <h3 class="w3-center"><b>Mengupdate Data Pemeriksaan</b></h3>
+    <h3 class="w3-center"><b>Mengupdate Data Pembayaran</b></h3>
 
     <!-- Updating Section -->
 
