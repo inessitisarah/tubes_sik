@@ -25,6 +25,21 @@ if(!isset($_SESSION['role'])){
 
     <!-- STYLE -->
     <?php include "templates/style.php"; ?>
+    <style>
+    body{
+    text-align:center;
+    }
+    body .form_wrapper{
+    display:inline-block;
+    background-color: #EFEBE9;
+    border-radius: 5px;
+    height: auto;
+    padding: 15px 18px;
+    margin: 5% auto;
+    margin-left: auto;
+    margin-right: auto;
+    } 
+    </style>
 </head>
 
 <!-- BODY -->
@@ -40,7 +55,7 @@ if(!isset($_SESSION['role'])){
 
     <!-- 'Preskripsi' Section -->
     
-    <div class="w3-container" style="padding:64px 16px" id="preskripsi">
+    <div class="w3-container" style="padding:16px 16px" id="preskripsi">
         <h3 class="w3-center"><b> Obat</b></h3>
         <div class="w3-row-padding" style="margin-top:32px">
 
@@ -48,8 +63,10 @@ if(!isset($_SESSION['role'])){
         <thead>
           <tr class="w3-light-grey">
             <th>Waktu Pemeriksaan</th>
+            <th>ID Pemeriksaan</th>
             <th>Nama Pasien</th>
             <th>Preskripsi Obat</th>
+            <th>Status</th>
           </tr>
         </thead>
 
@@ -58,7 +75,7 @@ if(!isset($_SESSION['role'])){
                 //nama pasien blm bisa diambil, karena data nama pasien masih di tabel pasien
                 //hrs dibikin query buat ngambilnya
                 
-                $sql = mysqli_query($configDB,"SELECT time_stamp,nama_pasien,preskripsi_obat FROM periksa,pasien WHERE periksa.id_pasien = pasien.id AND periksa.preskripsi_obat != '' order by time_stamp DESC LIMIT 10");
+                $sql = mysqli_query($configDB,"SELECT time_stamp,id_periksa,nama_pasien,preskripsi_obat,assigned FROM periksa,pasien WHERE periksa.id_pasien = pasien.id AND periksa.preskripsi_obat != '' order by time_stamp DESC LIMIT 10");
                 // LOOP TILL END OF DATA
                 while($row = mysqli_fetch_row($sql))
                 {
@@ -70,6 +87,8 @@ if(!isset($_SESSION['role'])){
                 <td><?php echo $row[0];?></td>
                 <td><?php echo $row[1];?></td>
                 <td><?php echo $row[2];?></td>
+                <td><?php echo $row[3];?></td>
+                <td><?php echo $row[4];?></td>
         </tr>
         
         <?php
@@ -82,6 +101,29 @@ if(!isset($_SESSION['role'])){
         <div class="w3-row-padding" style="margin-top:32px">
         <p class="w3-center">Menampilkan 10 Data Preskripsi Obat Terbaru.</p>
         </div>
+    </div>
+
+    <!-- ASSIGN OBAT -->
+    <div class="form_wrapper" style="margin-top:32px">    
+    <form  class="w3-center" action="actions/stokObatMinus.php" method="post" align ="center">
+        <div class="w3-center">
+        <table>
+            <tr>
+                <td><b>ID Periksa</b></td>
+                <td><input class="w3-input w3-border" name="idPeriksa" type="text"></td>
+            </tr>
+            <tr>
+                <td><b>Nama Obat</b></td>
+                <td><input class="w3-input w3-border" name="namaObat" type="text"></td>
+            </tr>
+        
+            <tr>
+                <td></td>
+                <td><input class="w3-btn w3-round w3-red" name="assign" value="Assign" type="submit">
+            </tr>
+        </table>
+        </div>
+    </form>
     </div>
 
     <!-- Footer -->

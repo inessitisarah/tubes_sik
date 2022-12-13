@@ -43,7 +43,7 @@ if(!isset($_SESSION['role'])){
         <h3 class="w3-center"><b>Stok Obat</b></h3>
         <div class="w3-row-padding" style="margin-top:32px">
 
-            <div class="w3-half">
+            <div class="w3-col">
             <form class="w3-container w3-card-4" action="actions/stokObatCek.php" method="get">
                 <p>      
                 <label class="w3-text-teal"><b>Nama</b></label>
@@ -55,7 +55,7 @@ if(!isset($_SESSION['role'])){
                 </div>
             </form>
             </div>
-
+            <!--
             <div class="w3-half">
             <form class="w3-container w3-card-4" action="actions/stokObatMinus.php" method="post">
                 <p>      
@@ -68,7 +68,7 @@ if(!isset($_SESSION['role'])){
                 </div>
             </form>
             </div>
-
+            //-->
             <div class="w3-row-padding" style="margin-top:256px">
             <div class="w3-half">
             <form class="w3-container w3-card-4" action="actions/stokObatInsert.php" method="post">
