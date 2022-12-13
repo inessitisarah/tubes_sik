@@ -1,11 +1,11 @@
 <?php 
     session_start(); 
     include "include/configDB.php";
-    if(!isset($_SESSION['role'])){
-        header("location: index.php");
-      }else if ($_SESSION['role']!='dokter'){
-        header('location: errorRedirect.php');
-    }
+    //if(!isset($_SESSION['role'])){
+        //header("location: index.php");
+      //}else if ($_SESSION['role']!='dokter'){
+        //header('location: errorRedirect.php');
+    //}
     $id =  $_SESSION['id'];
     $no = 1;
 ?>
@@ -62,24 +62,20 @@
         if ($num_rows == 0) {
     ?> 
             <br>
-            <h5 class="w3-center">Pasien tidak ada atau belum pernah melakukan pemeriksaan</h5>
+            <h5 class="w3-center">Pasien <?php echo $searchedName ?> tidak ada atau belum pernah melakukan pemeriksaan</h5>
             <?php
         } else {
             ?>
                 <?php
-            while ($hasilquery = mysqli_fetch_array($query)) { ?>
-                <?php
-                $tanggal_sekarang = date("Y-m-d");
-                $usia = date_diff(date_create($hasilquery['tanggal_lahir']), date_create($tanggal_sekarang));
+                //$tanggal_sekarang = date("Y-m-d");
+                //$usia = date_diff(date_create($hasilquery['tanggal_lahir']), date_create($tanggal_sekarang));
                 ?>
                 <br>
                 <div class="w3-container">  
-                <h5 style="margin-left:400px">Nama: <?php echo $hasilquery['nama_pasien']; ?></h5>
-                <h5 style="margin-left:400px">Usia: <?php echo $usia->format('%y tahun %m bulan %d hari'); ?></h5>
-                <h5 style="margin-left:400px">Golongan Darah: <?php echo $hasilquery['golongan_darah']; ?></h5>
 
 
-                <br>              
+                <br> 
+                <h5 class="w3-center">Berikut Riwayat Pemeriksaaan <?php echo $searchedName ?> </h5>             
                 <table class="w3-center w3-table w3-striped w3-border" style="width: 50%" align = "center">
                 <tr>
                     <th>No</th>
@@ -88,6 +84,7 @@
                     <th>Riwayat Preskripsi Obat</th>
                 </tr>
                 <?php
+                 while ($hasilquery = mysqli_fetch_array($query)) {
                 echo "
                     <tr>
                         <td>$no</td>
@@ -96,10 +93,11 @@
                         <td>$hasilquery[preskripsi_obat]</td>
                     </tr>";
                 $no++;
+                 }
 
             }
         }
-    }
+    
 
     ?>
     </table>
